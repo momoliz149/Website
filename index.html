@@ -18,17 +18,25 @@
        TOKENS
     ───────────────────────────────────────── */
     :root {
-      --color-burnt-orange:  #C1460B;
-      --color-acid-yellow:   #D4F04A;
-      --color-forest-green:  #1A5C2A;
-      --color-cream:         #F0EBE0;
-      --color-warm-tan:      #C4B49A;
-      --color-rich-black:    #1A1A1A;
-      --color-off-white:     #FAF8F4;
-      --color-blush-pink:    #E8C4D8;
-      --color-sage-mint:     #C4E0D4;
-      --color-deep-teal:     #2D6B6B;
-      --color-lavender:      #E8D5F0;
+      /* ── NEW PALETTE ── */
+      --color-honeydew:      #F8FFED;   /* Primary — page background   */
+      --color-lemon-lime:    #D3D858;   /* CTA buttons & highlights    */
+      --color-sweet-peony:   #CE75A1;   /* Brand accent & newsletter   */
+      --color-icy-blue:      #B5DCFD;   /* Soft section backgrounds    */
+      --color-olive-leaf:    #585B0A;   /* Dark text, hero, footer     */
+
+      /* ── SEMANTIC ALIASES (keep old names so all CSS still works) ── */
+      --color-burnt-orange:  #585B0A;   /* → Olive Leaf  */
+      --color-acid-yellow:   #D3D858;   /* → Lemon Lime  */
+      --color-forest-green:  #CE75A1;   /* → Sweet Peony */
+      --color-cream:         #EFF9DC;   /* light Honeydew tint         */
+      --color-warm-tan:      #B5DCFD;   /* → Icy Blue    */
+      --color-rich-black:    #2B2D00;   /* very dark olive             */
+      --color-off-white:     #F8FFED;   /* → Honeydew    */
+      --color-blush-pink:    #B5DCFD;   /* → Icy Blue    */
+      --color-sage-mint:     #E0F5C0;   /* light green tint            */
+      --color-deep-teal:     #585B0A;   /* → Olive Leaf  */
+      --color-lavender:      #F0FFE5;   /* very light Honeydew         */
 
       --font-display: 'Playfair Display', Georgia, serif;
       --font-body:    'DM Sans', system-ui, sans-serif;
@@ -117,11 +125,11 @@
 
     .btn-primary {
       background: var(--color-acid-yellow);
-      color: #1A1A00;
+      color: var(--color-olive-leaf);
     }
     .btn-primary:hover {
       transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(212,240,74,0.4);
+      box-shadow: 0 4px 20px rgba(211,216,88,0.45);
     }
 
     .btn-secondary {
@@ -149,7 +157,7 @@
     }
     .btn-orange:hover {
       transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(193,70,11,0.35);
+      box-shadow: 0 4px 20px rgba(88,91,10,0.35);
     }
 
     /* ─────────────────────────────────────────
@@ -225,10 +233,10 @@
       white-space: nowrap;
     }
     .nav-pill:hover { transform: scale(1.04); }
-    .nav-pill--outline  { border-color: #2c2c2c; color: #2c2c2c; background: transparent; }
-    .nav-pill--green    { background: var(--color-forest-green); color: var(--color-acid-yellow); border-color: var(--color-forest-green); }
-    .nav-pill--orange   { background: var(--color-burnt-orange); color: #fff; border-color: var(--color-burnt-orange); }
-    .nav-pill--teal     { background: var(--color-deep-teal); color: #fff; border-color: var(--color-deep-teal); }
+    .nav-pill--outline  { border-color: var(--color-olive-leaf); color: var(--color-olive-leaf); background: transparent; }
+    .nav-pill--green    { background: var(--color-sweet-peony); color: #fff; border-color: var(--color-sweet-peony); }
+    .nav-pill--orange   { background: var(--color-lemon-lime); color: var(--color-olive-leaf); border-color: var(--color-lemon-lime); }
+    .nav-pill--teal     { background: var(--color-icy-blue); color: var(--color-olive-leaf); border-color: var(--color-icy-blue); }
     .nav-mobile-toggle {
       display: none;
       flex-direction: column;
@@ -317,7 +325,7 @@
       top: -180px; right: -180px;
       width: 600px; height: 600px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.05);
+      background: rgba(211,216,88,0.06);
       pointer-events: none;
     }
 
@@ -375,7 +383,7 @@
       text-align: center;
     }
     .paths-inner { max-width: var(--container-max); margin: 0 auto; }
-    .paths .text-label { margin-bottom: 16px; display: block; color: #5a3a6a; }
+    .paths .text-label { margin-bottom: 16px; display: block; color: var(--color-olive-leaf); }
     .paths-headline {
       font-family: var(--font-display);
       font-size: clamp(32px, 4vw, 52px);
@@ -455,7 +463,7 @@
     .about-statement__bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, #2a1a0e 0%, #4a2a14 40%, #1a1a1a 100%);
+      background: linear-gradient(135deg, #2B2D00 0%, #585B0A 40%, #3a3d00 100%);
       z-index: 0;
     }
     /* Placeholder pattern — replace .about-statement__bg with actual img tag */
@@ -463,8 +471,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle at 20% 50%, rgba(193,70,11,0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(212,240,74,0.1) 0%, transparent 40%);
+        radial-gradient(circle at 20% 50%, rgba(206,117,161,0.25) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(211,216,88,0.12) 0%, transparent 40%);
       z-index: 1;
     }
     .about-statement__overlay {
@@ -648,9 +656,9 @@
       gap: 80px;
       align-items: start;
     }
-    .speaking__left .text-label { margin-bottom: 16px; display: block; color: #7a3a5a; }
+    .speaking__left .text-label { margin-bottom: 16px; display: block; color: var(--color-olive-leaf); }
     .speaking__left .text-h3 { margin-bottom: 20px; }
-    .speaking__left .text-body { margin-bottom: 36px; color: #4a2a3a; }
+    .speaking__left .text-body { margin-bottom: 36px; color: var(--color-olive-leaf); }
     .speaking__topics { padding-top: 8px; }
     .topic-list {
       list-style: none;
@@ -1088,22 +1096,22 @@
       </div>
       (JPG, square or landscape, min 600px each × 6 images)
     -->
-    <div class="photo-strip-item" style="background:#2a1810;">
+    <div class="photo-strip-item" style="background:#585B0A;">
       <div class="photo-strip-placeholder">Photo 1</div>
     </div>
-    <div class="photo-strip-item" style="background:#1A5C2A;">
+    <div class="photo-strip-item" style="background:#CE75A1;">
       <div class="photo-strip-placeholder">Photo 2</div>
     </div>
-    <div class="photo-strip-item" style="background:#C1460B;">
+    <div class="photo-strip-item" style="background:#D3D858;">
       <div class="photo-strip-placeholder">Photo 3</div>
     </div>
-    <div class="photo-strip-item" style="background:#2D6B6B;">
+    <div class="photo-strip-item" style="background:#B5DCFD;">
       <div class="photo-strip-placeholder">Photo 4</div>
     </div>
-    <div class="photo-strip-item" style="background:#5a3a6a;">
+    <div class="photo-strip-item" style="background:#2B2D00;">
       <div class="photo-strip-placeholder">Photo 5</div>
     </div>
-    <div class="photo-strip-item" style="background:#3a2010;">
+    <div class="photo-strip-item" style="background:#EFF9DC;">
       <div class="photo-strip-placeholder">Photo 6</div>
     </div>
   </div>
