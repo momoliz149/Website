@@ -302,10 +302,37 @@
       display: block;
     }
     .hero__text .text-display { color: #fff; margin-bottom: 24px; }
-    .hero__text .text-body {
-      color: rgba(255,255,255,0.8);
-      max-width: 380px;
-      margin-bottom: 40px;
+
+    /* Override uppercase rule — "but, why?" stays lowercase */
+    .hero-title { text-transform: lowercase !important; }
+
+    .hero-body {
+      max-width: 480px;
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .hero-body p {
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.82);
+      text-transform: lowercase;
+    }
+    .hero-body strong { color: #fff; font-weight: 600; }
+    .hero-body em     { font-style: oblique 12deg; color: rgba(255,255,255,0.9); }
+    .hero-body blockquote {
+      border-left: 3px solid var(--color-lemon-lime);
+      padding: 12px 18px;
+      margin: 6px 0 0;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-lemon-lime);
+      background: rgba(211,216,88,0.08);
+      border-radius: 0 8px 8px 0;
+      text-transform: lowercase;
     }
     .hero__photo {
       position: relative;
@@ -923,18 +950,20 @@
     <div class="hero-circle"></div>
     <div class="hero-inner">
       <div class="hero__text">
-        <span class="text-label reveal" style="color:rgba(255,255,255,0.6);">
-          Strategy · Media · Operations
-        </span>
-        <h1 class="text-display reveal reveal-delay-1" style="color:#fff; margin-top:16px;">
-          Build the thing.<br><em>Tell</em> the story.
+        <h1 class="text-display reveal reveal-delay-1 hero-title" style="color:#fff;">
+          but, why?
         </h1>
-        <p class="text-body reveal reveal-delay-2" style="color:rgba(255,255,255,0.8); max-width:380px; margin-top:24px;">
-          COO of AI Central Media. Writing about building companies,
-          operator life, and the future of media.
-        </p>
-        <a href="#newsletter" class="btn btn-primary reveal reveal-delay-3" style="margin-top:40px;">
-          Join 300,000+ readers →
+        <div class="hero-body reveal reveal-delay-2">
+          <p>hello, bonjour, ciao! i'm morgane, a 30-something year old that, along with literally every other millennial, is constantly trying to figure out what to do with my life. you'll find me in either london or milan (the beauty of a long distance relationship 😉), balancing being chronically online and the need to get some fresh air daily.</p>
+
+          <p>my background is what you might call the "traditional path" — went to university, did the sorority thing (my british parents were shook), and actually worked in the field my degree was in. after finishing my mba, i pivoted to international trade. then came my real (and literal) leap of faith last summer — i left the us after 27 years and returned to the homeland, aka old blighty. after <strong>months</strong> of applying to jobs and having no success, my partner encouraged me to build something of my own.</p>
+
+          <p>why am i writing this? well, my partner has grown tired of me constantly asking "why?" and i decided to turn to the internet to save him, but to also prove that curiosity isn't annoying. in the era of instant gratification, i'm looking to dig deeper. i hope i can fill the space between <em>the economist</em> and a smart friend who knows finance and government.</p>
+
+          <blockquote>here's something i've been wondering about, here's what i found out.</blockquote>
+        </div>
+        <a href="#" class="btn btn-primary reveal reveal-delay-3" style="margin-top:40px;">
+          check it out →
         </a>
       </div>
 
