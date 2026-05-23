@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Morgane Marlow — Build the thing. Tell the story.</title>
-  <meta name="description" content="COO of AI Central Media. Writing about building companies, operator life, and the future of media." />
-  <meta property="og:title" content="Morgane Marlow — Build the thing. Tell the story." />
-  <meta property="og:description" content="COO of AI Central Media. Writing about building companies, operator life, and the future of media." />
+  <title>Morgane Marlow — But, Why?</title>
+  <meta name="description" content="A free weekly newsletter by Morgane Marlow. Finance, government, and the world — one question at a time." />
+  <meta property="og:title" content="Morgane Marlow — But, Why?" />
+  <meta property="og:description" content="A free weekly newsletter. The space between The Economist and a smart friend who knows finance and government." />
   <meta property="og:image" content="/img/og-image.jpg" />
 
-  <!-- Neue Montreal via Fontshare (free, no license needed) -->
+  <!-- Neue Montreal via Fontshare -->
   <link rel="preconnect" href="https://api.fontshare.com" />
   <link href="https://api.fontshare.com/v2/css?f[]=neue-montreal@300,400,500&display=swap" rel="stylesheet" />
 
-  <!-- Tan Mon Cheri — drop TanMonCheri.woff2 (and optionally .woff) into /fonts/ -->
   <style>
+    /* ── Tan Mon Cheri @font-face ── */
     @font-face {
       font-family: 'Tan Mon Cheri';
       src: url('/fonts/TanMonCheri.woff2') format('woff2'),
@@ -23,7 +23,6 @@
       font-style:  normal;
       font-display: swap;
     }
-    /* Force synthesised italic from the regular file */
     @font-face {
       font-family: 'Tan Mon Cheri';
       src: url('/fonts/TanMonCheri.woff2') format('woff2'),
@@ -32,1240 +31,1288 @@
       font-style:  italic;
       font-display: swap;
     }
-    /* Apply a visual slant since no true italic file exists */
-    em, i, .text-h2, [style*="italic"] {
-      font-style: oblique 12deg !important;
-    }
-  </style>
+    em, i { font-style: oblique 12deg !important; }
 
-  <style>
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════════
        TOKENS
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════════ */
     :root {
-      /* ── NEW PALETTE ── */
-      --color-honeydew:      #F8FFED;   /* Primary — page background   */
-      --color-lemon-lime:    #D3D858;   /* CTA buttons & highlights    */
-      --color-sweet-peony:   #CE75A1;   /* Brand accent & newsletter   */
-      --color-icy-blue:      #B5DCFD;   /* Soft section backgrounds    */
-      --color-olive-leaf:    #585B0A;   /* Dark text, hero, footer     */
+      /* Palette */
+      --color-honeydew:     #F8FFED;
+      --color-lemon-lime:   #D3D858;
+      --color-sweet-peony:  #CE75A1;
+      --color-icy-blue:     #B5DCFD;
+      --color-olive-leaf:   #585B0A;
+      --color-olive-dark:   #2B2D00;
+      --color-cream:        #EFF9DC;
 
-      /* ── SEMANTIC ALIASES (keep old names so all CSS still works) ── */
-      --color-burnt-orange:  #585B0A;   /* → Olive Leaf  */
-      --color-acid-yellow:   #D3D858;   /* → Lemon Lime  */
-      --color-forest-green:  #CE75A1;   /* → Sweet Peony */
-      --color-cream:         #EFF9DC;   /* light Honeydew tint         */
-      --color-warm-tan:      #B5DCFD;   /* → Icy Blue    */
-      --color-rich-black:    #2B2D00;   /* very dark olive             */
-      --color-off-white:     #F8FFED;   /* → Honeydew    */
-      --color-blush-pink:    #B5DCFD;   /* → Icy Blue    */
-      --color-sage-mint:     #E0F5C0;   /* light green tint            */
-      --color-deep-teal:     #585B0A;   /* → Olive Leaf  */
-      --color-lavender:      #F0FFE5;   /* very light Honeydew         */
+      /* Semantic aliases — brief names kept for clarity */
+      --color-burnt-orange: #585B0A;
+      --color-acid-yellow:  #D3D858;
+      --color-forest-green: #CE75A1;
+      --color-off-white:    #F8FFED;
+      --color-blush-pink:   #B5DCFD;
+      --color-rich-black:   #2B2D00;
+      --color-warm-tan:     #B5DCFD;
 
+      /* Fonts */
       --font-display: 'Tan Mon Cheri', Georgia, serif;
       --font-body:    'Neue Montreal', system-ui, sans-serif;
 
+      /* Shape */
       --radius-pill: 100px;
       --radius-card: 20px;
 
+      /* Spacing */
       --section-padding-y: 120px;
       --section-padding-x: 80px;
-      --container-max: 1280px;
+      --container-max:     1280px;
     }
 
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════════
        RESET & BASE
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
+    html  { scroll-behavior: smooth; }
+    body  {
       font-family: var(--font-body);
-      color: var(--color-rich-black);
-      background: var(--color-off-white);
+      color: var(--color-olive-dark);
+      background: var(--color-honeydew);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      text-transform: lowercase;
     }
     a { color: inherit; text-decoration: none; }
     img { display: block; }
 
-    /* ─────────────────────────────────────────
-       TYPE SCALE
-    ───────────────────────────────────────── */
-    .text-display {
-      font-family: var(--font-display);
-      font-size: clamp(52px, 8vw, 96px);
-      font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
+    /* ── Text transform overrides ── */
+    /* Tan Mon Cheri elements → UPPERCASE */
+    h1, h2, h3,
+    .text-display, .text-h2, .text-h3,
+    .stat-card__number, .footer-wordmark,
+    .issue-card__title, .work-tile__title,
+    .timeline-item__org, .nav-logo {
+      text-transform: uppercase;
     }
-    .text-display em {
-      font-style: italic;
-      font-weight: 400;
+    /* Hero title exception → stays lowercase */
+    .hero-title { text-transform: lowercase !important; }
+
+    /* ══════════════════════════════════════════
+       TYPE SCALE
+    ══════════════════════════════════════════ */
+    .text-display {
+      font-family:     var(--font-display);
+      font-size:       clamp(52px, 8vw, 96px);
+      font-weight:     700;
+      line-height:     1.0;
+      letter-spacing:  -0.02em;
     }
     .text-h2 {
       font-family: var(--font-display);
-      font-size: clamp(32px, 4vw, 52px);
+      font-size:   clamp(32px, 4vw, 52px);
       font-weight: 400;
-      font-style: italic;
       line-height: 1.15;
     }
     .text-h3 {
       font-family: var(--font-display);
-      font-size: clamp(22px, 2.5vw, 32px);
+      font-size:   clamp(22px, 2.5vw, 32px);
       font-weight: 700;
       line-height: 1.2;
     }
     .text-body {
       font-family: var(--font-body);
-      font-size: 16px;
+      font-size:   16px;
       font-weight: 400;
       line-height: 1.7;
     }
     .text-label {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-family:     var(--font-body);
+      font-size:       11px;
+      font-weight:     600;
+      letter-spacing:  0.12em;
     }
 
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════════
        BUTTONS
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════════ */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      border: none;
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 14px;
-      padding: 14px 28px;
+      display:      inline-flex;
+      align-items:  center;
+      gap:          8px;
+      cursor:       pointer;
+      border:       none;
+      font-family:  var(--font-body);
+      font-weight:  600;
+      font-size:    14px;
+      padding:      14px 28px;
       border-radius: var(--radius-pill);
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+      transition:   transform 0.15s ease, box-shadow 0.15s ease,
+                    background 0.15s ease, color 0.15s ease;
+      text-transform: lowercase;
     }
     .btn:active { transform: scale(0.97); }
 
     .btn-primary {
-      background: var(--color-acid-yellow);
-      color: var(--color-olive-leaf);
+      background: var(--color-lemon-lime);
+      color:      var(--color-olive-leaf);
     }
     .btn-primary:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(211,216,88,0.45);
+      transform:  scale(1.03);
+      box-shadow: 0 4px 20px rgba(211,216,88,0.4);
     }
-
     .btn-secondary {
-      background: transparent;
-      color: var(--color-rich-black);
-      border: 1.5px solid var(--color-rich-black);
-      padding: 12px 26px;
+      background:   transparent;
+      color:        var(--color-olive-dark);
+      border:       1.5px solid var(--color-olive-dark);
+      padding:      12px 26px;
     }
     .btn-secondary:hover {
-      background: var(--color-rich-black);
-      color: var(--color-acid-yellow);
+      background: var(--color-olive-dark);
+      color:      var(--color-lemon-lime);
     }
-
     .btn-outline-white {
-      background: transparent;
-      color: #fff;
-      border: 1.5px solid rgba(255,255,255,0.6);
-      padding: 12px 26px;
+      background:  transparent;
+      color:       #fff;
+      border:      1.5px solid rgba(255,255,255,0.55);
+      padding:     12px 26px;
     }
     .btn-outline-white:hover { background: rgba(255,255,255,0.12); }
 
-    .btn-orange {
-      background: var(--color-burnt-orange);
-      color: #fff;
-    }
-    .btn-orange:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 20px rgba(88,91,10,0.35);
-    }
-
-    /* ─────────────────────────────────────────
+    /* ══════════════════════════════════════════
        SCROLL REVEAL
-    ───────────────────────────────────────── */
+    ══════════════════════════════════════════ */
     .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      opacity:   0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
     }
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal.is-visible       { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
 
-    /* ─────────────────────────────────────────
-       SECTION 1 — NAV
-    ───────────────────────────────────────── */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--color-off-white);
-      transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
-      border-bottom: 0.5px solid transparent;
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
+    .site-nav {
+      position:         sticky;
+      top:              0;
+      z-index:          100;
+      display:          flex;
+      align-items:      center;
+      justify-content:  space-between;
+      padding:          0 var(--section-padding-x);
+      height:           72px;
+      background:       var(--color-honeydew);
+      border-bottom:    0.5px solid transparent;
+      transition:       background 0.3s ease, border-color 0.3s ease,
+                        backdrop-filter 0.3s ease;
     }
-    .nav--scrolled {
-      background: rgba(250, 248, 244, 0.85);
-      backdrop-filter: blur(12px);
+    .site-nav.nav--scrolled {
+      background:       rgba(248,255,237,0.88);
+      backdrop-filter:  blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border-bottom-color: rgba(0,0,0,0.08);
     }
-    .nav-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 var(--section-padding-x);
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-    }
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-    }
-    .nav-logo em {
-      font-style: italic;
-      font-weight: 400;
+      font-family:     var(--font-display);
+      font-size:       20px;
+      font-weight:     700;
+      color:           var(--color-olive-leaf);
+      text-transform:  uppercase;
     }
     .nav-pills {
-      display: flex;
+      display:     flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: nowrap;
+      gap:         8px;
     }
     .nav-pill {
-      padding: 8px 18px;
+      padding:       8px 18px;
       border-radius: var(--radius-pill);
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 500;
-      border: 1.5px solid;
-      cursor: pointer;
-      transition: all 0.15s ease;
-      white-space: nowrap;
+      font-family:   var(--font-body);
+      font-size:     13px;
+      font-weight:   500;
+      border:        1.5px solid;
+      cursor:        pointer;
+      transition:    all 0.15s ease;
+      white-space:   nowrap;
+      text-transform: lowercase;
     }
-    .nav-pill:hover { transform: scale(1.04); }
-    .nav-pill--outline  { border-color: var(--color-olive-leaf); color: var(--color-olive-leaf); background: transparent; }
-    .nav-pill--green    { background: var(--color-sweet-peony); color: #fff; border-color: var(--color-sweet-peony); }
-    .nav-pill--orange   { background: var(--color-lemon-lime); color: var(--color-olive-leaf); border-color: var(--color-lemon-lime); }
-    .nav-pill--teal     { background: var(--color-icy-blue); color: var(--color-olive-leaf); border-color: var(--color-icy-blue); }
+    .nav-pill:hover             { transform: scale(1.04); }
+    .nav-pill--outline          { border-color: var(--color-olive-leaf); color: var(--color-olive-leaf); background: transparent; }
+    .nav-pill--green            { background: var(--color-sweet-peony); color: #fff; border-color: var(--color-sweet-peony); }
+    .nav-pill--lemon            { background: var(--color-lemon-lime); color: var(--color-olive-leaf); border-color: var(--color-lemon-lime); }
+    .nav-pill--blue             { background: var(--color-icy-blue); color: var(--color-olive-dark); border-color: var(--color-icy-blue); }
     .nav-mobile-toggle {
-      display: none;
+      display:        none;
       flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 4px;
+      gap:            5px;
+      cursor:         pointer;
+      padding:        4px;
     }
     .nav-mobile-toggle span {
-      display: block; width: 22px; height: 2px;
-      background: var(--color-rich-black); border-radius: 2px;
+      display:       block;
+      width:         22px;
+      height:        2px;
+      background:    var(--color-olive-dark);
+      border-radius: 2px;
     }
 
-    /* ─────────────────────────────────────────
-       SECTION 2 — HERO
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       SECTION 1 — HERO
+    ══════════════════════════════════════════ */
     .hero {
-      background: var(--color-burnt-orange);
+      background: var(--color-olive-leaf);
       min-height: 100dvh;
-      position: relative;
-      display: flex;
+      display:    flex;
       align-items: flex-end;
-      overflow: hidden;
-      padding: var(--section-padding-y) var(--section-padding-x) 100px;
+      padding:    0 var(--section-padding-x) 80px;
+      position:   relative;
+      overflow:   visible;
     }
     .hero-inner {
       max-width: var(--container-max);
-      margin: 0 auto;
-      width: 100%;
-      display: grid;
+      margin:    0 auto;
+      width:     100%;
+      display:   grid;
       grid-template-columns: 1fr 1fr;
+      gap:       48px;
       align-items: flex-end;
-      gap: 40px;
     }
-    .hero__text { position: relative; z-index: 2; }
+    .hero__text {
+      max-width:  560px;
+      position:   relative;
+      z-index:    5;
+    }
     .hero__text .text-label {
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 20px;
-      display: block;
+      color:        rgba(255,255,255,0.6);
+      display:      block;
+      margin-bottom: 16px;
+      text-transform: lowercase;
     }
-    .hero__text .text-display { color: #fff; margin-bottom: 24px; }
-
-    /* Override uppercase rule — "but, why?" stays lowercase */
-    .hero-title { text-transform: lowercase !important; }
-
+    .hero-title {
+      font-family:    var(--font-display);
+      font-size:      clamp(52px, 8vw, 96px);
+      font-weight:    700;
+      line-height:    1.0;
+      letter-spacing: -0.02em;
+      color:          #fff;
+      margin-bottom:  24px;
+    }
     .hero-body {
-      max-width: 480px;
-      margin-top: 28px;
-      display: flex;
+      display:        flex;
       flex-direction: column;
-      gap: 18px;
+      gap:            18px;
+      max-width:      480px;
+      margin-bottom:  36px;
     }
     .hero-body p {
       font-family: var(--font-body);
-      font-size: 15px;
+      font-size:   15px;
       line-height: 1.75;
-      color: rgba(255,255,255,0.82);
+      color:       rgba(255,255,255,0.82);
       text-transform: lowercase;
     }
     .hero-body strong { color: #fff; font-weight: 600; }
-    .hero-body em     { font-style: oblique 12deg; color: rgba(255,255,255,0.9); }
+    .hero-body em     { color: rgba(255,255,255,0.92); }
     .hero-body blockquote {
-      border-left: 3px solid var(--color-lemon-lime);
-      padding: 12px 18px;
-      margin: 6px 0 0;
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--color-lemon-lime);
-      background: rgba(211,216,88,0.08);
+      border-left:  3px solid var(--color-lemon-lime);
+      padding:      12px 18px;
+      font-family:  var(--font-body);
+      font-size:    14px;
+      font-weight:  600;
+      color:        var(--color-lemon-lime);
+      background:   rgba(211,216,88,0.08);
       border-radius: 0 8px 8px 0;
       text-transform: lowercase;
     }
+    .hero__cta { display: flex; gap: 12px; flex-wrap: wrap; }
     .hero__photo {
-      position: relative;
-      display: flex;
+      position:   relative;
+      display:    flex;
       justify-content: flex-end;
       align-items: flex-end;
     }
-    /* Placeholder for hero photo — replace with actual PNG cutout */
-    .hero__photo-placeholder {
-      width: 440px;
-      height: 560px;
-      border-radius: 24px 24px 0 0;
-      background: linear-gradient(160deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.04) 100%);
-      border: 1.5px solid rgba(255,255,255,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .hero__photo-placeholder::after {
-      content: 'Photo\A(PNG cutout\Agoes here)';
-      white-space: pre;
-      text-align: center;
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: rgba(255,255,255,0.35);
-      letter-spacing: 0.05em;
-    }
     .hero__photo img {
-      position: absolute;
-      right: 8%;
-      bottom: 0;
-      height: 95%;
-      max-height: 720px;
-      object-fit: contain;
+      position:        absolute;
+      right:           0;
+      bottom:          0;
+      height:          92%;
+      max-height:      680px;
+      width:           auto;
+      object-fit:      contain;
       object-position: bottom;
-      z-index: 10;
+      z-index:         10;
+    }
+    .hero__photo-placeholder {
+      width:        400px;
+      height:       520px;
+      border-radius: 20px 20px 0 0;
+      background:   rgba(255,255,255,0.07);
+      border:       1.5px solid rgba(255,255,255,0.15);
+      display:      flex;
+      align-items:  center;
+      justify-content: center;
+      font-family:  var(--font-body);
+      font-size:    13px;
+      color:        rgba(255,255,255,0.3);
+      text-align:   center;
+      line-height:  1.6;
     }
     /* Decorative circle */
-    .hero-circle {
-      position: absolute;
-      top: -180px; right: -180px;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: rgba(211,216,88,0.06);
+    .hero-bg-circle {
+      position:       absolute;
+      top:            -200px;
+      right:          -200px;
+      width:          600px;
+      height:         600px;
+      border-radius:  50%;
+      background:     rgba(211,216,88,0.05);
       pointer-events: none;
     }
 
-    /* ─────────────────────────────────────────
-       SECTION 3 — CREDIBILITY
-    ───────────────────────────────────────── */
-    .credibility {
+    /* ══════════════════════════════════════════
+       SECTION 2 — NEWSLETTER INTRO
+    ══════════════════════════════════════════ */
+    .newsletter-intro {
       background: var(--color-cream);
-      padding: var(--section-padding-y) var(--section-padding-x);
+      padding:    var(--section-padding-y) var(--section-padding-x);
     }
-    .credibility-inner {
+    .newsletter-intro-inner {
       max-width: var(--container-max);
-      margin: 0 auto;
-      display: grid;
+      margin:    0 auto;
+      display:   grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
-    .credibility__statement .text-h2 { margin-bottom: 32px; }
-    .credibility__stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .stat-card {
-      background: var(--color-burnt-orange);
-      border-radius: var(--radius-card);
-      padding: 28px 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      transition: transform 0.2s ease;
-    }
-    .stat-card:hover { transform: translateY(-4px); }
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 42px;
-      font-weight: 700;
-      color: var(--color-acid-yellow);
-      line-height: 1;
-    }
-    .stat-label {
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
-      font-weight: 400;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 4 — PATHS
-    ───────────────────────────────────────── */
-    .paths {
-      background: var(--color-lavender);
-      padding: var(--section-padding-y) var(--section-padding-x);
-      text-align: center;
-    }
-    .paths-inner { max-width: var(--container-max); margin: 0 auto; }
-    .paths .text-label { margin-bottom: 16px; display: block; color: var(--color-olive-leaf); }
-    .paths-headline {
-      font-family: var(--font-display);
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 400;
-      font-style: italic;
-      margin-bottom: 60px;
-      color: var(--color-rich-black);
-    }
-    .path-cards-wrapper {
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 0;
-    }
-    .path-card {
-      border-radius: var(--radius-card);
-      padding: 36px 28px;
-      min-height: 240px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      flex: 1;
-      max-width: 320px;
-      transition: transform 0.25s ease, z-index 0s;
-      cursor: pointer;
-    }
-    .path-card:nth-child(1) { transform: rotate(-4deg) translateX(20px); z-index: 1; }
-    .path-card:nth-child(2) { transform: rotate(0deg) translateY(-20px); z-index: 3; }
-    .path-card:nth-child(3) { transform: rotate(3deg) translateX(-20px); z-index: 2; }
-    .path-card:hover        { transform: rotate(0deg) translateY(-10px) scale(1.03); z-index: 10; }
-    .path-card--green  { background: var(--color-forest-green); }
-    .path-card--orange { background: var(--color-burnt-orange); }
-    .path-card--tan    { background: var(--color-warm-tan); }
-    .path-card p {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 24px;
-    }
-    .path-card--green p  { color: var(--color-acid-yellow); }
-    .path-card--orange p { color: #fff; }
-    .path-card--tan p    { color: var(--color-rich-black); }
-    .path-card-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 10px 20px;
-      border-radius: var(--radius-pill);
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 600;
-      align-self: flex-start;
-      border: 1.5px solid rgba(255,255,255,0.5);
-      color: rgba(255,255,255,0.9);
-      background: rgba(255,255,255,0.1);
-      transition: background 0.15s ease;
-    }
-    .path-card-btn:hover { background: rgba(255,255,255,0.2); }
-    .path-card--tan .path-card-btn {
-      border-color: rgba(0,0,0,0.2);
-      color: var(--color-rich-black);
-      background: rgba(0,0,0,0.06);
-    }
-    .path-card--tan .path-card-btn:hover { background: rgba(0,0,0,0.12); }
-
-    /* ─────────────────────────────────────────
-       SECTION 5 — ABOUT STATEMENT
-    ───────────────────────────────────────── */
-    .about-statement {
-      position: relative;
-      overflow: hidden;
-      min-height: 80vh;
-      display: flex;
-      align-items: flex-end;
-    }
-    .about-statement__bg {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #2B2D00 0%, #585B0A 40%, #3a3d00 100%);
-      z-index: 0;
-    }
-    /* Placeholder pattern — replace .about-statement__bg with actual img tag */
-    .about-statement__bg-pattern {
-      position: absolute;
-      inset: 0;
-      background-image:
-        radial-gradient(circle at 20% 50%, rgba(206,117,161,0.25) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(211,216,88,0.12) 0%, transparent 40%);
-      z-index: 1;
-    }
-    .about-statement__overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.5);
-      z-index: 2;
-    }
-    .about-statement__content {
-      position: relative;
-      z-index: 3;
-      width: 100%;
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: var(--section-padding-y) var(--section-padding-x);
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 60px;
-    }
-    .about-statement__left { flex: 1; }
-    .about-statement__left .text-h2 { color: #fff; }
-    .about-statement__right {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      gap: 16px;
-      max-width: 300px;
-      text-align: right;
-    }
-    .about-statement__right p {
-      color: rgba(255,255,255,0.75);
-      font-size: 16px;
-      line-height: 1.65;
-    }
-    /* Photo note overlay */
-    .about-photo-note {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 13px;
-      color: rgba(255,255,255,0.25);
-      text-align: center;
-      font-family: var(--font-body);
-      letter-spacing: 0.05em;
-      z-index: 3;
-      pointer-events: none;
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 6 — NEWSLETTER CTA
-    ───────────────────────────────────────── */
-    .newsletter-cta {
-      background: var(--color-forest-green);
-      padding: var(--section-padding-y) var(--section-padding-x);
-      text-align: center;
-    }
-    .newsletter-cta-inner { max-width: var(--container-max); margin: 0 auto; }
-    .newsletter-cta .text-label {
-      color: var(--color-acid-yellow);
-      margin-bottom: 20px;
-      display: block;
-    }
-    .newsletter-cta-headline {
-      font-family: var(--font-display);
-      font-size: clamp(36px, 5vw, 64px);
-      font-weight: 700;
-      color: #fff;
-      max-width: 680px;
-      margin: 0 auto 24px;
-      line-height: 1.1;
-    }
-    .newsletter-cta-body {
-      color: rgba(255,255,255,0.7);
-      max-width: 420px;
-      margin: 0 auto 44px;
-      font-size: 16px;
-      line-height: 1.7;
-    }
-    .email-form {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .email-input {
-      padding: 14px 24px;
-      border-radius: var(--radius-pill);
-      border: 1.5px solid rgba(255,255,255,0.3);
-      background: rgba(255,255,255,0.1);
-      color: #fff;
-      font-family: var(--font-body);
-      font-size: 15px;
-      width: 300px;
-      outline: none;
-      transition: border-color 0.2s ease;
-    }
-    .email-input::placeholder { color: rgba(255,255,255,0.45); }
-    .email-input:focus { border-color: var(--color-acid-yellow); }
-    .newsletter-note {
-      margin-top: 16px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.45);
-    }
-
-    /* ─────────────────────────────────────────
-       SECTION 7 — FEATURED WRITING
-    ───────────────────────────────────────── */
-    .featured-writing {
-      background: var(--color-off-white);
-      padding: var(--section-padding-y) var(--section-padding-x);
-    }
-    .featured-writing-inner { max-width: var(--container-max); margin: 0 auto; }
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-    .section-header .text-label { color: #888; }
-    .writing-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .writing-card {
-      background: var(--color-cream);
-      border-radius: var(--radius-card);
-      padding: 36px 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      transition: transform 0.2s ease;
-      cursor: pointer;
-    }
-    .writing-card:hover { transform: translateY(-6px); }
-    .writing-card__tag {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--color-burnt-orange);
-    }
-    .writing-card__title {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 700;
-      line-height: 1.25;
-      color: var(--color-rich-black);
-    }
-    .writing-card__excerpt {
-      font-family: var(--font-body);
-      font-size: 14px;
-      color: #666;
-      line-height: 1.65;
-      flex: 1;
-    }
-    .writing-card__link {
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--color-burnt-orange);
-      align-self: flex-start;
-    }
-    .writing-card__link:hover { text-decoration: underline; }
-
-    /* ─────────────────────────────────────────
-       SECTION 8 — SPEAKING
-    ───────────────────────────────────────── */
-    .speaking {
-      background: var(--color-blush-pink);
-      padding: var(--section-padding-y) var(--section-padding-x);
-    }
-    .speaking-inner {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap:       80px;
       align-items: start;
     }
-    .speaking__left .text-label { margin-bottom: 16px; display: block; color: var(--color-olive-leaf); }
-    .speaking__left .text-h3 { margin-bottom: 20px; }
-    .speaking__left .text-body { margin-bottom: 36px; color: var(--color-olive-leaf); }
-    .speaking__topics { padding-top: 8px; }
-    .topic-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
+    .newsletter-intro__left .text-label {
+      color:        var(--color-olive-leaf);
+      display:      block;
+      margin-bottom: 16px;
+    }
+    .newsletter-intro__left .text-h2 { margin-bottom: 20px; }
+    .newsletter-intro__left .text-body {
+      color:     var(--color-olive-dark);
+      max-width: 420px;
+    }
+    .intro-bio {
+      display:        flex;
       flex-direction: column;
+      gap:            14px;
+      margin-top:     20px;
     }
-    .topic-list li {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 400;
-      font-style: italic;
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.12);
-      color: var(--color-rich-black);
-      transition: color 0.2s ease, padding-left 0.2s ease;
-      cursor: default;
+    .intro-bio p {
+      font-family:    var(--font-body);
+      font-size:      14px;
+      line-height:    1.75;
+      color:          #4a4e00;
+      text-transform: lowercase;
     }
-    .topic-list li:first-child { border-top: 1px solid rgba(0,0,0,0.12); }
-    .topic-list li:hover {
-      color: var(--color-burnt-orange);
-      padding-left: 12px;
+    .intro-bio strong { color: var(--color-olive-leaf); font-weight: 600; }
+    .intro-bio em     { color: var(--color-olive-leaf); }
+    .newsletter-intro__right {
+      display:        flex;
+      flex-direction: column;
+      gap:            20px;
+      padding-top:    8px;
     }
 
-    /* ─────────────────────────────────────────
-       SECTION 9 — PHOTO STRIP
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       ISSUE CARD
+    ══════════════════════════════════════════ */
+    .issue-card {
+      background:    var(--color-honeydew);
+      border:        1.5px solid rgba(88,91,10,0.15);
+      border-radius: var(--radius-card);
+      padding:       28px 24px;
+      display:       flex;
+      flex-direction: column;
+      gap:           10px;
+      transition:    transform 0.2s ease, border-color 0.2s ease;
+    }
+    .issue-card:hover {
+      transform:    translateY(-4px);
+      border-color: var(--color-olive-leaf);
+    }
+    .issue-card__number {
+      font-family:     var(--font-body);
+      font-size:       11px;
+      font-weight:     600;
+      letter-spacing:  0.1em;
+      color:           var(--color-olive-leaf);
+      text-transform:  lowercase;
+    }
+    .issue-card__title {
+      font-family: var(--font-display);
+      font-size:   20px;
+      font-weight: 700;
+      color:       var(--color-olive-dark);
+      line-height: 1.25;
+    }
+    .issue-card__tease {
+      font-family: var(--font-body);
+      font-size:   14px;
+      color:       #5a5e00;
+      line-height: 1.6;
+      flex:        1;
+    }
+    .issue-card__cta {
+      font-family: var(--font-body);
+      font-size:   13px;
+      font-weight: 600;
+      color:       var(--color-olive-leaf);
+      align-self:  flex-start;
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION 3 — SUBSCRIBE
+    ══════════════════════════════════════════ */
+    .subscribe-cta {
+      background: var(--color-sweet-peony);
+      padding:    var(--section-padding-y) var(--section-padding-x);
+    }
+    .subscribe-cta-inner {
+      max-width:  580px;
+      margin:     0 auto;
+      text-align: center;
+    }
+    .subscribe-cta .text-label {
+      color:       var(--color-lemon-lime);
+      display:     block;
+      margin-bottom: 16px;
+      text-transform: lowercase;
+    }
+    .subscribe-headline {
+      font-family: var(--font-display);
+      font-size:   clamp(36px, 5vw, 60px);
+      font-weight: 700;
+      color:       #fff;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .subscribe-cta .text-body {
+      color:        rgba(255,255,255,0.75);
+      margin-bottom: 40px;
+    }
+    .email-form {
+      display:         flex;
+      gap:             12px;
+      justify-content: center;
+      flex-wrap:       wrap;
+    }
+    .email-input {
+      padding:       14px 24px;
+      border-radius: var(--radius-pill);
+      border:        1.5px solid rgba(255,255,255,0.35);
+      background:    rgba(255,255,255,0.12);
+      color:         #fff;
+      font-family:   var(--font-body);
+      font-size:     15px;
+      width:         300px;
+      outline:       none;
+      transition:    border-color 0.2s;
+      text-transform: lowercase;
+    }
+    .email-input::placeholder { color: rgba(255,255,255,0.5); }
+    .email-input:focus        { border-color: var(--color-lemon-lime); }
+    .subscribe-note {
+      font-size:    12px;
+      color:        rgba(255,255,255,0.5);
+      margin-top:   14px;
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION 4 — ABOUT & CAREER SNAPSHOT
+    ══════════════════════════════════════════ */
+    .about-snapshot {
+      background: var(--color-honeydew);
+      padding:    var(--section-padding-y) var(--section-padding-x);
+    }
+    .about-snapshot-inner {
+      max-width: var(--container-max);
+      margin:    0 auto;
+      display:   grid;
+      grid-template-columns: 1fr 1fr;
+      gap:       80px;
+      align-items: start;
+    }
+    .about-snapshot__bio .text-label {
+      color:        var(--color-olive-leaf);
+      display:      block;
+      margin-bottom: 16px;
+    }
+    .about-snapshot__bio .text-h3 { margin-bottom: 20px; }
+    .about-snapshot__bio .text-body + .text-body { margin-top: 16px; }
+    .about-snapshot__timeline .text-label {
+      color:        #aaa;
+      display:      block;
+      margin-bottom: 24px;
+    }
+
+    /* Timeline */
+    .timeline {
+      display:        flex;
+      flex-direction: column;
+      gap:            0;
+      position:       relative;
+    }
+    .timeline::before {
+      content:    '';
+      position:   absolute;
+      left:       7px;
+      top:        8px;
+      bottom:     8px;
+      width:      1px;
+      background: var(--color-icy-blue);
+    }
+    .timeline-item {
+      display:        flex;
+      gap:            20px;
+      padding-bottom: 28px;
+      position:       relative;
+    }
+    .timeline-item::before {
+      content:       '';
+      width:         15px;
+      height:        15px;
+      border-radius: 50%;
+      background:    var(--color-olive-leaf);
+      border:        2px solid var(--color-honeydew);
+      flex-shrink:   0;
+      margin-top:    4px;
+      position:      relative;
+      z-index:       1;
+    }
+    .timeline-item__org {
+      font-family: var(--font-display);
+      font-size:   18px;
+      font-weight: 700;
+      color:       var(--color-olive-dark);
+      margin:      0 0 2px;
+    }
+    .timeline-item__role {
+      font-family: var(--font-body);
+      font-size:   14px;
+      color:       var(--color-olive-leaf);
+      margin:      0 0 2px;
+      text-transform: lowercase;
+    }
+    .timeline-item__years {
+      font-family: var(--font-body);
+      font-size:   12px;
+      color:       #888;
+      margin:      0;
+      text-transform: lowercase;
+    }
+    .timeline-item:hover .timeline-item__org { color: var(--color-olive-leaf); transition: color 0.15s; }
+    .career-link {
+      font-family:  var(--font-body);
+      font-size:    13px;
+      font-weight:  600;
+      color:        var(--color-olive-leaf);
+      display:      inline-block;
+      margin-top:   24px;
+      text-transform: lowercase;
+    }
+    .career-link:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════
+       SECTION 5 — WORK WITH ME
+    ══════════════════════════════════════════ */
+    .work-with-me {
+      background: var(--color-icy-blue);
+      padding:    var(--section-padding-y) var(--section-padding-x);
+    }
+    .work-with-me-inner { max-width: var(--container-max); margin: 0 auto; }
+    .work-with-me__header {
+      text-align:    center;
+      margin-bottom: 56px;
+    }
+    .work-with-me__header .text-label {
+      color:        var(--color-olive-leaf);
+      display:      block;
+      margin-bottom: 12px;
+    }
+    .work-with-me__header .text-h2 { margin-bottom: 16px; }
+    .work-with-me__header .text-body {
+      max-width:  480px;
+      margin:     0 auto;
+      color:      var(--color-olive-dark);
+    }
+    .work-tiles {
+      display:               grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:                   24px;
+    }
+    .work-tile {
+      background:    rgba(255,255,255,0.55);
+      border:        1.5px solid rgba(88,91,10,0.15);
+      border-radius: var(--radius-card);
+      padding:       36px 32px;
+      display:       flex;
+      flex-direction: column;
+      gap:           12px;
+      transition:    background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .work-tile:hover {
+      background:   rgba(255,255,255,0.85);
+      border-color: var(--color-olive-leaf);
+      transform:    translateY(-4px);
+    }
+    .work-tile__icon { font-size: 28px; margin-bottom: 4px; }
+    .work-tile__title {
+      font-family: var(--font-display);
+      font-size:   22px;
+      font-weight: 700;
+      color:       var(--color-olive-dark);
+    }
+    .work-tile__desc {
+      font-family:    var(--font-body);
+      font-size:      14px;
+      color:          #555;
+      line-height:    1.65;
+      flex:           1;
+      text-transform: lowercase;
+    }
+    .work-tile__cta {
+      font-family:    var(--font-body);
+      font-size:      13px;
+      font-weight:    600;
+      color:          var(--color-olive-leaf);
+      align-self:     flex-start;
+      margin-top:     auto;
+      text-transform: lowercase;
+    }
+    .work-tile__cta:hover { text-decoration: underline; }
+    .work-footer {
+      text-align: center;
+      margin-top: 48px;
+    }
+    .work-footer-italic {
+      font-family:    var(--font-display);
+      font-size:      18px;
+      color:          var(--color-olive-leaf);
+      margin-bottom:  16px;
+      display:        block;
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION 6 — AI CENTRAL MEDIA
+    ══════════════════════════════════════════ */
+    .ai-central {
+      background: var(--color-olive-dark);
+      padding:    var(--section-padding-y) var(--section-padding-x);
+    }
+    .ai-central-inner {
+      max-width: var(--container-max);
+      margin:    0 auto;
+      display:   grid;
+      grid-template-columns: 1fr 1fr;
+      gap:       80px;
+      align-items: center;
+    }
+    .ai-central__left .text-label {
+      color:        rgba(255,255,255,0.4);
+      display:      block;
+      margin-bottom: 16px;
+    }
+    .ai-central__left .text-h3 { color: #fff; margin-bottom: 20px; }
+    .ai-central__left .text-body {
+      color:     rgba(255,255,255,0.72);
+      max-width: 380px;
+    }
+    .stats-grid {
+      display:               grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap:                   16px;
+      align-content:         start;
+    }
+    .stat-card {
+      background:    var(--color-olive-leaf);
+      border-radius: var(--radius-card);
+      padding:       28px 24px;
+      display:       flex;
+      flex-direction: column;
+      gap:           6px;
+      transition:    transform 0.2s ease;
+    }
+    .stat-card:hover { transform: translateY(-4px); }
+    .stat-card__number {
+      font-family: var(--font-display);
+      font-size:   42px;
+      font-weight: 700;
+      color:       var(--color-lemon-lime);
+      line-height: 1;
+    }
+    .stat-card__label {
+      font-family:    var(--font-body);
+      font-size:      13px;
+      color:          rgba(255,255,255,0.7);
+      text-transform: lowercase;
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION 7 — RECENT ISSUES
+    ══════════════════════════════════════════ */
+    .recent-issues {
+      background: var(--color-cream);
+      padding:    var(--section-padding-y) var(--section-padding-x);
+    }
+    .recent-issues-inner { max-width: var(--container-max); margin: 0 auto; }
+    .section-header {
+      display:          flex;
+      justify-content:  space-between;
+      align-items:      flex-start;
+      margin-bottom:    40px;
+    }
+    .section-header .text-label {
+      color:        var(--color-olive-leaf);
+      display:      block;
+      margin-bottom: 8px;
+    }
+    .issues-grid {
+      display:               grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:                   24px;
+    }
+
+    /* ══════════════════════════════════════════
+       SECTION 8 — PHOTO STRIP
+    ══════════════════════════════════════════ */
     .photo-strip {
-      display: grid;
+      display:               grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 0;
-      width: 100%;
-      overflow: hidden;
+      gap:                   0;
+      width:                 100%;
+      overflow:              hidden;
     }
     .photo-strip-item {
-      width: 100%;
-      height: 280px;
+      height:   260px;
       overflow: hidden;
       position: relative;
     }
     .photo-strip-item img {
-      width: 100%;
-      height: 100%;
+      width:      100%;
+      height:     100%;
       object-fit: cover;
+      display:    block;
       transition: transform 0.4s ease;
-      display: block;
     }
-    .photo-strip-item:hover img { transform: scale(1.06); }
-    /* Placeholder for strip when no photos */
+    .photo-strip-item:hover img { transform: scale(1.05); }
     .photo-strip-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
+      width:           100%;
+      height:          100%;
+      display:         flex;
+      align-items:     center;
       justify-content: center;
-      font-family: var(--font-body);
-      font-size: 11px;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.08em;
+      font-family:     var(--font-body);
+      font-size:       11px;
+      color:           rgba(255,255,255,0.4);
+      letter-spacing:  0.06em;
+      text-transform:  lowercase;
     }
 
-    /* ─────────────────────────────────────────
-       SECTION 10 — FOOTER
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
     footer {
-      background: var(--color-cream);
+      background:  var(--color-cream);
       padding-top: 80px;
-      overflow: hidden;
+      overflow:    hidden;
     }
     .footer__nav {
-      display: grid;
+      display:               grid;
       grid-template-columns: repeat(4, auto);
-      justify-content: start;
-      gap: 60px;
-      padding: 0 var(--section-padding-x) 60px;
-      max-width: var(--container-max);
-      margin: 0 auto;
+      justify-content:       start;
+      gap:                   60px;
+      padding:               0 var(--section-padding-x) 60px;
+      max-width:             var(--container-max);
+      margin:                0 auto;
     }
     .footer__col-title {
-      font-family: var(--font-body);
-      font-size: 11px;
-      font-weight: 600;
+      font-family:    var(--font-body);
+      font-size:      11px;
+      font-weight:    600;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 16px;
+      color:          #999;
+      margin-bottom:  14px;
+      text-transform: lowercase;
     }
     .footer__col a {
-      display: block;
-      font-size: 14px;
-      color: var(--color-rich-black);
-      margin-bottom: 10px;
-      transition: color 0.15s ease;
+      display:        block;
+      font-size:      14px;
+      color:          var(--color-olive-dark);
+      margin-bottom:  10px;
+      transition:     color 0.15s;
+      text-transform: lowercase;
     }
-    .footer__col a:hover { color: var(--color-burnt-orange); }
-    .footer__col--social {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      justify-content: flex-start;
-    }
-    .footer__col--social .btn-secondary { font-size: 13px; }
+    .footer__col a:hover { color: var(--color-olive-leaf); }
     .footer-wordmark {
-      font-family: var(--font-display);
-      font-size: clamp(64px, 11vw, 140px);
-      font-weight: 700;
-      color: var(--color-burnt-orange);
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      padding: 0 var(--section-padding-x);
-      white-space: nowrap;
-      overflow: hidden;
+      font-family:     var(--font-display);
+      font-size:       clamp(64px, 11vw, 140px);
+      font-weight:     700;
+      color:           var(--color-olive-leaf);
+      line-height:     0.9;
+      letter-spacing:  -0.03em;
+      padding:         0 var(--section-padding-x);
+      white-space:     nowrap;
+      overflow:        hidden;
+      text-transform:  uppercase;
     }
     .footer-wordmark em {
-      font-style: italic;
-      font-weight: 400;
-      margin: 0 0.12em;
+      margin: 0 0.1em;
+    }
+    .footer-tagline {
+      font-family:  var(--font-display);
+      font-size:    16px;
+      color:        #aaa;
+      padding:      0 var(--section-padding-x) 40px;
+      margin-top:   -12px;
+      display:      block;
+      text-transform: lowercase;
     }
     .footer__strip {
-      background: var(--color-burnt-orange);
-      color: rgba(255,255,255,0.7);
-      font-size: 12px;
-      font-family: var(--font-body);
-      padding: 20px var(--section-padding-x);
-      display: flex;
+      background:      var(--color-olive-leaf);
+      color:           rgba(255,255,255,0.7);
+      font-size:       12px;
+      font-family:     var(--font-body);
+      padding:         20px var(--section-padding-x);
+      display:         flex;
       justify-content: space-between;
-      align-items: center;
-      margin-top: 60px;
+      align-items:     center;
+      margin-top:      60px;
+      text-transform:  lowercase;
     }
 
-    /* ─────────────────────────────────────────
-       TEXT TRANSFORM
-    ───────────────────────────────────────── */
-
-    /* Neue Montreal → always lowercase */
-    body { text-transform: lowercase; }
-
-    /* Tan Mon Cheri → always UPPERCASE (overrides body) */
-    .text-display,
-    .text-h2,
-    .text-h3,
-    .stat-number,
-    .footer-wordmark,
-    .paths-headline,
-    .newsletter-cta-headline,
-    .path-card p,
-    .writing-card__title,
-    .topic-list li,
-    .nav-logo,
-    h1, h2, h3 {
-      text-transform: uppercase;
-    }
-
-    /* ─────────────────────────────────────────
-       RESPONSIVE — MOBILE < 768px
-    ───────────────────────────────────────── */
+    /* ══════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════ */
     @media (max-width: 768px) {
       :root {
         --section-padding-y: 72px;
         --section-padding-x: 24px;
       }
-      /* Nav */
-      .nav-inner { height: 60px; }
+      .site-nav { padding: 0 24px; height: 60px; }
       .nav-pills { display: none; }
       .nav-mobile-toggle { display: flex; }
 
-      /* Hero */
-      .hero { min-height: auto; padding-bottom: 60px; align-items: flex-start; padding-top: 60px; }
+      .hero { align-items: flex-start; padding-top: 80px; min-height: auto; padding-bottom: 60px; }
       .hero-inner { grid-template-columns: 1fr; gap: 40px; }
       .hero__photo { justify-content: center; }
-      .hero__photo-placeholder { width: 100%; height: 300px; }
+      .hero__photo-placeholder { width: 100%; height: 280px; }
+      .hero__photo img { position: relative; right: auto; height: auto; width: 100%; max-height: 380px; }
 
-      /* Credibility */
-      .credibility-inner { grid-template-columns: 1fr; gap: 40px; }
-      .credibility__stats { grid-template-columns: repeat(2, 1fr); }
-      .stat-number { font-size: 32px; }
+      .newsletter-intro-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-snapshot-inner   { grid-template-columns: 1fr; gap: 48px; }
+      .ai-central-inner       { grid-template-columns: 1fr; gap: 48px; }
+      .work-tiles             { grid-template-columns: 1fr; }
+      .issues-grid            { grid-template-columns: 1fr; }
+      .stats-grid             { grid-template-columns: repeat(2, 1fr); }
 
-      /* Paths */
-      .path-cards-wrapper { flex-direction: column; align-items: center; gap: 16px; }
-      .path-card { max-width: 100%; }
-      .path-card:nth-child(1),
-      .path-card:nth-child(2),
-      .path-card:nth-child(3) { transform: none; }
-
-      /* About statement */
-      .about-statement__content { flex-direction: column; align-items: flex-start; }
-      .about-statement__right { align-items: flex-start; text-align: left; }
-
-      /* Writing */
-      .writing-grid { grid-template-columns: 1fr; }
-
-      /* Speaking */
-      .speaking-inner { grid-template-columns: 1fr; gap: 40px; }
-
-      /* Photo strip */
       .photo-strip { grid-template-columns: repeat(3, 1fr); }
       .photo-strip-item:nth-child(n+4) { display: none; }
-      .photo-strip-item { height: 200px; }
+      .photo-strip-item { height: 180px; }
 
-      /* Footer */
       .footer__nav { grid-template-columns: 1fr 1fr; gap: 32px; }
-      .footer-wordmark { font-size: 18vw; }
+      .footer-wordmark { font-size: 17vw; }
       .footer__strip { flex-direction: column; gap: 6px; text-align: center; }
+
+      .section-header { flex-direction: column; gap: 16px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 1 — NAV
-  ═══════════════════════════════════════ -->
-  <nav class="nav" id="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo"><em>Morgane</em> Marlow</a>
-
-      <div class="nav-pills">
-        <a href="#about" class="nav-pill nav-pill--outline">About</a>
-        <a href="#writing" class="nav-pill nav-pill--green">Writing ↓</a>
-        <a href="#newsletter" class="nav-pill nav-pill--orange">Newsletter</a>
-        <a href="#speaking" class="nav-pill nav-pill--outline">Speaking</a>
-        <a href="#speaking" class="nav-pill nav-pill--teal">Work With Me</a>
-      </div>
-
-      <a href="#newsletter" class="btn btn-primary">Subscribe →</a>
-
-      <button class="nav-mobile-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
-        <span></span><span></span><span></span>
-      </button>
+  <!-- ════════════════════════════════════
+       NAV
+  ════════════════════════════════════ -->
+  <nav class="site-nav" id="site-nav">
+    <a href="/" class="nav-logo">MM</a>
+    <div class="nav-pills">
+      <a href="/newsletter" class="nav-pill nav-pill--green">newsletter</a>
+      <a href="#about"      class="nav-pill nav-pill--outline">about</a>
+      <a href="/career"     class="nav-pill nav-pill--outline">career</a>
+      <a href="#work"       class="nav-pill nav-pill--blue">work with me</a>
     </div>
+    <a href="/newsletter" class="btn btn-primary">subscribe →</a>
+    <button class="nav-mobile-toggle" aria-label="Menu" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 2 — HERO
-  ═══════════════════════════════════════ -->
+  <!-- ════════════════════════════════════
+       SECTION 1 — HERO
+  ════════════════════════════════════ -->
   <section class="hero">
-    <div class="hero-circle"></div>
+    <div class="hero-bg-circle"></div>
     <div class="hero-inner">
+
       <div class="hero__text">
-        <h1 class="text-display reveal reveal-delay-1 hero-title" style="color:#fff;">
-          but, why?
-        </h1>
-        <div class="hero-body reveal reveal-delay-2">
+        <span class="text-label reveal">a newsletter by morgane marlow</span>
+        <h1 class="hero-title reveal reveal-d1">but, why?</h1>
+
+        <div class="hero-body reveal reveal-d2">
           <p>hello, bonjour, ciao! i'm morgane, a 30-something year old that, along with literally every other millennial, is constantly trying to figure out what to do with my life. you'll find me in either london or milan (the beauty of a long distance relationship 😉), balancing being chronically online and the need to get some fresh air daily.</p>
-
           <p>my background is what you might call the "traditional path" — went to university, did the sorority thing (my british parents were shook), and actually worked in the field my degree was in. after finishing my mba, i pivoted to international trade. then came my real (and literal) leap of faith last summer — i left the us after 27 years and returned to the homeland, aka old blighty. after <strong>months</strong> of applying to jobs and having no success, my partner encouraged me to build something of my own.</p>
-
           <p>why am i writing this? well, my partner has grown tired of me constantly asking "why?" and i decided to turn to the internet to save him, but to also prove that curiosity isn't annoying. in the era of instant gratification, i'm looking to dig deeper. i hope i can fill the space between <em>the economist</em> and a smart friend who knows finance and government.</p>
-
           <blockquote>here's something i've been wondering about, here's what i found out.</blockquote>
         </div>
-        <a href="#" class="btn btn-primary reveal reveal-delay-3" style="margin-top:40px;">
-          check it out →
+
+        <div class="hero__cta reveal reveal-d3">
+          <a href="#" class="btn btn-primary">check it out →</a>
+          <a href="#newsletter-intro" class="btn btn-outline-white">read the latest issue</a>
+        </div>
+      </div>
+
+      <div class="hero__photo reveal reveal-d2">
+        <!--
+          Replace placeholder with:
+          <img src="/img/morgane-hero.png" alt="Morgane Marlow" />
+          (PNG with transparent background, portrait, min 1400px tall)
+        -->
+        <div class="hero__photo-placeholder">photo<br>(png cutout<br>goes here)</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 2 — NEWSLETTER INTRO
+  ════════════════════════════════════ -->
+  <section class="newsletter-intro" id="newsletter-intro">
+    <div class="newsletter-intro-inner">
+
+      <div class="newsletter-intro__left reveal">
+        <span class="text-label">free · weekly · no fluff</span>
+        <h2 class="text-h2" style="margin-top:16px; margin-bottom:20px;">
+          here's something i've been<br>wondering about.
+        </h2>
+        <p class="text-body">
+          the space between <em>the economist</em> and a smart friend who
+          knows finance and government. each issue: one question,
+          properly dug into. free, every week.
+        </p>
+        <a href="#" class="btn btn-secondary" style="margin-top:28px;">browse all issues →</a>
+      </div>
+
+      <div class="newsletter-intro__right reveal reveal-d2">
+        <a href="#" class="issue-card">
+          <span class="issue-card__number">issue 01</span>
+          <h3 class="issue-card__title">why does the uk keep losing its best fintech companies?</h3>
+          <p class="issue-card__tease">we built the ecosystem. then watched it leave. here's what actually happened.</p>
+          <span class="issue-card__cta">read →</span>
+        </a>
+        <a href="#" class="issue-card">
+          <span class="issue-card__number">issue 02</span>
+          <h3 class="issue-card__title">what exactly is a trade mission, and do they work?</h3>
+          <p class="issue-card__tease">i spent two years running them. the honest answer is: it depends.</p>
+          <span class="issue-card__cta">read →</span>
         </a>
       </div>
 
-      <div class="hero__photo reveal reveal-delay-2">
-        <!--
-          Replace the placeholder below with:
-          <img src="/img/morgane-hero.png" alt="Morgane Marlow" />
-          (PNG with transparent background, min 1200px tall)
-        -->
-        <div class="hero__photo-placeholder"></div>
-      </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 3 — CREDIBILITY
-  ═══════════════════════════════════════ -->
-  <section class="credibility" id="about">
-    <div class="credibility-inner">
-      <div class="credibility__statement reveal">
-        <h2 class="text-h2">
-          Some operators run the business.<br>
-          I <em>also write about</em> it.
-        </h2>
-        <a href="#about" class="btn btn-secondary" style="margin-top:32px;">Meet Morgane →</a>
-      </div>
-
-      <div class="credibility__stats">
-        <div class="stat-card reveal reveal-delay-1">
-          <span class="stat-number">300K+</span>
-          <span class="stat-label">Combined readers</span>
-        </div>
-        <div class="stat-card reveal reveal-delay-2">
-          <span class="stat-number">178K</span>
-          <span class="stat-label">LinkedIn followers</span>
-        </div>
-        <div class="stat-card reveal reveal-delay-3">
-          <span class="stat-number">75K+</span>
-          <span class="stat-label">Newsletter subscribers</span>
-        </div>
-        <div class="stat-card reveal reveal-delay-4">
-          <span class="stat-number">Seed</span>
-          <span class="stat-label">AI Central Media</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 4 — PATHS
-  ═══════════════════════════════════════ -->
-  <section class="paths">
-    <div class="paths-inner">
-      <span class="text-label reveal">Start somewhere</span>
-      <h2 class="paths-headline reveal reveal-delay-1">What do you want to explore first?</h2>
-
-      <div class="path-cards-wrapper">
-        <div class="path-card path-card--green reveal reveal-delay-1">
-          <p>Understand how AI is changing media.</p>
-          <a href="#writing" class="path-card-btn">Show me →</a>
-        </div>
-        <div class="path-card path-card--orange reveal reveal-delay-2">
-          <p>Read about building companies from the inside.</p>
-          <a href="#writing" class="path-card-btn">Take me there →</a>
-        </div>
-        <div class="path-card path-card--tan reveal reveal-delay-3">
-          <p>Work smarter as an operator.</p>
-          <a href="#writing" class="path-card-btn">I'm ready →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 5 — ABOUT STATEMENT
-  ═══════════════════════════════════════ -->
-  <section class="about-statement">
-    <!--
-      Replace .about-statement__bg with:
-      <img src="/img/morgane-editorial.jpg"
-           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"
-           alt="" />
-      (High-contrast landscape editorial photo, min 2400px wide)
-    -->
-    <div class="about-statement__bg"></div>
-    <div class="about-statement__bg-pattern"></div>
-    <div class="about-statement__overlay"></div>
-    <div class="about-photo-note">Editorial photo<br>goes here</div>
-
-    <div class="about-statement__content">
-      <div class="about-statement__left reveal">
-        <h2 class="text-h2">
-          Some people run the numbers.<br>
-          I run the <em>whole thing</em>.
-        </h2>
-      </div>
-      <div class="about-statement__right reveal reveal-delay-2">
-        <p>I'd rather ask the questions that change how you think about the work.</p>
-        <a href="#newsletter" class="btn btn-primary" style="margin-top:16px;">Meet Morgane →</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 6 — NEWSLETTER CTA
-  ═══════════════════════════════════════ -->
-  <section class="newsletter-cta" id="newsletter">
-    <div class="newsletter-cta-inner">
-      <span class="text-label reveal">Free · Weekly · No fluff</span>
-      <h2 class="newsletter-cta-headline reveal reveal-delay-1">
-        The newsletter operators actually read.
-      </h2>
-      <p class="newsletter-cta-body reveal reveal-delay-2">
-        AI, media, and what's actually working — direct to your inbox.
-        Join 300,000+ readers.
+  <!-- ════════════════════════════════════
+       SECTION 3 — SUBSCRIBE
+  ════════════════════════════════════ -->
+  <section class="subscribe-cta">
+    <div class="subscribe-cta-inner reveal">
+      <span class="text-label">join the curious</span>
+      <h2 class="subscribe-headline" style="margin-top:16px;">here's what i found out.</h2>
+      <p class="text-body" style="color:rgba(255,255,255,0.75); margin-bottom:40px;">
+        free, weekly. unsubscribe whenever. no sponsored nonsense.
       </p>
-      <form class="email-form reveal reveal-delay-3" onsubmit="return false;">
-        <input type="email" class="email-input" placeholder="your@email.com" />
-        <button type="submit" class="btn btn-primary">Subscribe →</button>
+      <form class="email-form" onsubmit="return false;">
+        <input class="email-input" type="email" placeholder="your@email.com" />
+        <button type="submit" class="btn btn-primary">subscribe →</button>
       </form>
-      <p class="newsletter-note reveal reveal-delay-4">No spam, ever. Unsubscribe anytime.</p>
+      <p class="subscribe-note">no spam, ever.</p>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 7 — FEATURED WRITING
-  ═══════════════════════════════════════ -->
-  <section class="featured-writing" id="writing">
-    <div class="featured-writing-inner">
-      <div class="section-header reveal">
-        <span class="text-label">From the newsletter</span>
-        <a href="#writing" class="btn btn-secondary" style="font-size:13px; padding:10px 20px;">See all →</a>
-      </div>
+  <!-- ════════════════════════════════════
+       SECTION 4 — ABOUT & CAREER
+  ════════════════════════════════════ -->
+  <section class="about-snapshot" id="about">
+    <div class="about-snapshot-inner">
 
-      <div class="writing-grid">
-        <article class="writing-card reveal reveal-delay-1">
-          <div class="writing-card__tag">AI & Media</div>
-          <h3 class="writing-card__title">Why every media company is now a tech company</h3>
-          <p class="writing-card__excerpt">
-            The lines between editorial and engineering have collapsed.
-            Here's what operators need to understand before they get left behind.
-          </p>
-          <a href="#" class="writing-card__link">Read →</a>
-        </article>
-
-        <article class="writing-card reveal reveal-delay-2">
-          <div class="writing-card__tag">Operator Life</div>
-          <h3 class="writing-card__title">The decisions no one tells you you'll have to make</h3>
-          <p class="writing-card__excerpt">
-            Building from the inside looks nothing like the highlight reel.
-            Here's what the first 18 months of operating really feel like.
-          </p>
-          <a href="#" class="writing-card__link">Read →</a>
-        </article>
-
-        <article class="writing-card reveal reveal-delay-3">
-          <div class="writing-card__tag">Strategy</div>
-          <h3 class="writing-card__title">Revenue models that actually work for modern media</h3>
-          <p class="writing-card__excerpt">
-            Ads, subscriptions, events, licensing — the playbook has changed.
-            What's working now and what's already obsolete.
-          </p>
-          <a href="#" class="writing-card__link">Read →</a>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════
-       SECTION 8 — SPEAKING
-  ═══════════════════════════════════════ -->
-  <section class="speaking" id="speaking">
-    <div class="speaking-inner">
-      <div class="speaking__left reveal">
-        <span class="text-label">Speaking & Partnerships</span>
-        <h2 class="text-h3" style="margin-top:16px;">
-          Bring a different<br>perspective to your stage.
+      <div class="about-snapshot__bio reveal">
+        <span class="text-label">who's asking?</span>
+        <h2 class="text-h3" style="margin-top:16px; margin-bottom:20px;">
+          chief of staff-style strategist &amp; connector.
         </h2>
-        <p class="text-body" style="margin-top:20px;">
-          I speak on AI and media, operator strategy, building
-          in public, and what it actually takes to scale a modern
-          media company from the inside.
+        <p class="text-body">
+          i partner with leadership teams to navigate complexity and move
+          priorities forward — especially where policy, partnerships, and
+          cross-border growth intersect. with 8+ years across government,
+          tech-enabled businesses, and regulated industries, i bring
+          structure to ambiguity.
         </p>
-        <a href="#newsletter" class="btn btn-orange" style="margin-top:36px;">Get in touch →</a>
+        <p class="text-body" style="margin-top:16px;">
+          kellogg mba. currently coo of ai central media, london-based,
+          perpetually curious.
+        </p>
+        <a href="/career" class="btn btn-secondary" style="margin-top:28px;">full background →</a>
       </div>
 
-      <div class="speaking__topics reveal reveal-delay-2">
-        <ul class="topic-list">
-          <li>AI & the future of media</li>
-          <li>Building an audience from zero</li>
-          <li>Operator vs founder mindset</li>
-          <li>Revenue models for creators</li>
-          <li>Strategic partnerships</li>
-        </ul>
+      <div class="about-snapshot__timeline reveal reveal-d2">
+        <span class="text-label">experience</span>
+        <div class="timeline" style="margin-top:24px;">
+          <div class="timeline-item">
+            <div class="timeline-item__content">
+              <p class="timeline-item__org">AI Central Media</p>
+              <p class="timeline-item__role">coo &amp; co-founder</p>
+              <p class="timeline-item__years">2024 – present · london</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__content">
+              <p class="timeline-item__org">UK Government — DBT</p>
+              <p class="timeline-item__role">senior trade &amp; investment officer</p>
+              <p class="timeline-item__years">2022 – 2025 · chicago</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__content">
+              <p class="timeline-item__org">Northern Trust</p>
+              <p class="timeline-item__role">senior consultant, hedge fund services</p>
+              <p class="timeline-item__years">2018 – 2021 · chicago</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-item__content">
+              <p class="timeline-item__org">The Vanguard Group</p>
+              <p class="timeline-item__role">client relationship associate</p>
+              <p class="timeline-item__years">2014 – 2015 · scottsdale</p>
+            </div>
+          </div>
+        </div>
+        <a href="/career" class="career-link">see full career history →</a>
       </div>
+
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 9 — PHOTO STRIP
-  ═══════════════════════════════════════ -->
-  <div class="photo-strip" aria-label="Photo gallery">
-    <!--
-      Replace each .photo-strip-item with:
-      <div class="photo-strip-item">
-        <img src="/img/gallery-N.jpg" alt="" />
+  <!-- ════════════════════════════════════
+       SECTION 5 — WORK WITH ME
+  ════════════════════════════════════ -->
+  <section class="work-with-me" id="work">
+    <div class="work-with-me-inner">
+
+      <div class="work-with-me__header reveal">
+        <span class="text-label">opportunities</span>
+        <h2 class="text-h2" style="margin-top:12px; margin-bottom:16px;">let's work together.</h2>
+        <p class="text-body">
+          a few ways i currently work with people and organisations.
+          more detail coming — in the meantime, just get in touch.
+        </p>
       </div>
-      (JPG, square or landscape, min 600px each × 6 images)
+
+      <div class="work-tiles">
+        <div class="work-tile reveal reveal-d1">
+          <div class="work-tile__icon">🧭</div>
+          <h3 class="work-tile__title">advisory &amp; consulting</h3>
+          <p class="work-tile__desc">strategy, growth, cross-border expansion. details coming soon.</p>
+          <a href="mailto:hello@morganemarlow.com" class="work-tile__cta">let's talk →</a>
+        </div>
+        <div class="work-tile reveal reveal-d2">
+          <div class="work-tile__icon">🎤</div>
+          <h3 class="work-tile__title">speaking</h3>
+          <p class="work-tile__desc">ai, media, operator strategy, building in public. details coming soon.</p>
+          <a href="mailto:hello@morganemarlow.com" class="work-tile__cta">book me →</a>
+        </div>
+        <div class="work-tile reveal reveal-d3">
+          <div class="work-tile__icon">🤝</div>
+          <h3 class="work-tile__title">partnerships &amp; media</h3>
+          <p class="work-tile__desc">newsletter partnerships and brand collaborations. details coming soon.</p>
+          <a href="mailto:hello@morganemarlow.com" class="work-tile__cta">get in touch →</a>
+        </div>
+      </div>
+
+      <div class="work-footer reveal">
+        <em class="work-footer-italic">not sure which fits? just say hello.</em>
+        <a href="mailto:hello@morganemarlow.com" class="btn btn-secondary">hello@morganemarlow.com →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 6 — AI CENTRAL MEDIA
+  ════════════════════════════════════ -->
+  <section class="ai-central">
+    <div class="ai-central-inner">
+
+      <div class="ai-central__left reveal">
+        <span class="text-label">currently building</span>
+        <h2 class="text-h3" style="margin-top:16px;">AI Central Media</h2>
+        <p class="text-body" style="margin-top:20px;">
+          the leading newsletter and media company covering ai for
+          business leaders and operators. co-founded with alex fiore.
+          seed-stage, london-based.
+        </p>
+        <a href="https://aicentral.com" target="_blank" rel="noopener noreferrer"
+           class="btn btn-outline-white" style="margin-top:28px;">
+          visit ai central media ↗
+        </a>
+      </div>
+
+      <div class="ai-central__stats reveal reveal-d2">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-card__number">300K+</span>
+            <span class="stat-card__label">combined readers</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">178K</span>
+            <span class="stat-card__label">linkedin subscribers</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">75K+</span>
+            <span class="stat-card__label">newsletter subscribers</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 7 — RECENT ISSUES
+  ════════════════════════════════════ -->
+  <section class="recent-issues">
+    <div class="recent-issues-inner">
+
+      <div class="section-header reveal">
+        <div>
+          <span class="text-label">from the newsletter</span>
+          <h2 class="text-h3" style="margin-top:8px;">recent issues</h2>
+        </div>
+        <a href="#" class="btn btn-secondary" style="font-size:13px; padding:10px 20px; align-self:center;">
+          see all issues →
+        </a>
+      </div>
+
+      <div class="issues-grid">
+        <a href="#" class="issue-card reveal reveal-d1">
+          <span class="issue-card__number">issue 01</span>
+          <h3 class="issue-card__title">issue title here</h3>
+          <p class="issue-card__tease">one-line tease here — coming soon.</p>
+          <span class="issue-card__cta">read →</span>
+        </a>
+        <a href="#" class="issue-card reveal reveal-d2">
+          <span class="issue-card__number">issue 02</span>
+          <h3 class="issue-card__title">issue title here</h3>
+          <p class="issue-card__tease">one-line tease here — coming soon.</p>
+          <span class="issue-card__cta">read →</span>
+        </a>
+        <a href="#" class="issue-card reveal reveal-d3">
+          <span class="issue-card__number">issue 03</span>
+          <h3 class="issue-card__title">issue title here</h3>
+          <p class="issue-card__tease">one-line tease here — coming soon.</p>
+          <span class="issue-card__cta">read →</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════
+       SECTION 8 — PHOTO STRIP
+  ════════════════════════════════════ -->
+  <div class="photo-strip" aria-label="photo gallery">
+    <!--
+      Replace each item with:
+      <div class="photo-strip-item"><img src="/img/gallery-N.jpg" alt="" loading="lazy" /></div>
     -->
     <div class="photo-strip-item" style="background:#585B0A;">
-      <div class="photo-strip-placeholder">Photo 1</div>
+      <div class="photo-strip-placeholder">photo 1</div>
     </div>
     <div class="photo-strip-item" style="background:#CE75A1;">
-      <div class="photo-strip-placeholder">Photo 2</div>
+      <div class="photo-strip-placeholder">photo 2</div>
     </div>
     <div class="photo-strip-item" style="background:#D3D858;">
-      <div class="photo-strip-placeholder">Photo 3</div>
+      <div class="photo-strip-placeholder">photo 3</div>
     </div>
     <div class="photo-strip-item" style="background:#B5DCFD;">
-      <div class="photo-strip-placeholder">Photo 4</div>
+      <div class="photo-strip-placeholder">photo 4</div>
     </div>
     <div class="photo-strip-item" style="background:#2B2D00;">
-      <div class="photo-strip-placeholder">Photo 5</div>
+      <div class="photo-strip-placeholder">photo 5</div>
     </div>
     <div class="photo-strip-item" style="background:#EFF9DC;">
-      <div class="photo-strip-placeholder">Photo 6</div>
+      <div class="photo-strip-placeholder">photo 6</div>
     </div>
   </div>
 
-  <!-- ═══════════════════════════════════════
-       SECTION 10 — FOOTER
-  ═══════════════════════════════════════ -->
+  <!-- ════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════ -->
   <footer>
     <div class="footer__nav">
       <div class="footer__col">
-        <p class="footer__col-title">Site</p>
-        <a href="#about">About</a>
-        <a href="#writing">Writing</a>
-        <a href="#newsletter">Newsletter</a>
+        <p class="footer__col-title">explore</p>
+        <a href="#">newsletter</a>
+        <a href="/career">career</a>
+        <a href="#about">about</a>
       </div>
       <div class="footer__col">
-        <p class="footer__col-title">Work</p>
-        <a href="#speaking">Speaking</a>
-        <a href="#speaking">Work With Me</a>
-        <a href="https://aicentral.com" target="_blank" rel="noopener">AI Central Media ↗</a>
+        <p class="footer__col-title">work</p>
+        <a href="#work">work with me</a>
+        <a href="https://aicentral.com" target="_blank" rel="noopener noreferrer">ai central media ↗</a>
       </div>
       <div class="footer__col">
-        <p class="footer__col-title">Connect</p>
-        <a href="https://linkedin.com/in/morganemarlow" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="#newsletter">Newsletter ↗</a>
+        <p class="footer__col-title">connect</p>
+        <a href="https://linkedin.com/in/morgane-marlow" target="_blank" rel="noopener noreferrer">linkedin ↗</a>
+        <a href="mailto:hello@morganemarlow.com">email</a>
       </div>
-      <div class="footer__col footer__col--social">
-        <p class="footer__col-title">Follow</p>
-        <a href="https://linkedin.com/in/morganemarlow" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:13px; padding:10px 20px;">Follow on LinkedIn ↗</a>
-        <a href="#newsletter" class="btn btn-secondary" style="font-size:13px; padding:10px 20px; margin-top:8px;">Subscribe to Newsletter ↗</a>
+      <div class="footer__col">
+        <p class="footer__col-title">but, why?</p>
+        <a href="#" class="btn btn-primary" style="font-size:13px; padding:10px 20px;">subscribe free →</a>
       </div>
     </div>
 
-    <div class="footer-wordmark">
-      Morgane <em>with</em> Purpose
-    </div>
+    <div class="footer-wordmark">Morgane <em>Marlow</em></div>
+    <span class="footer-tagline">but, why?</span>
 
     <div class="footer__strip">
-      <p>© 2026 Morgane Marlow. All rights reserved.</p>
-      <p>Built with intention.</p>
+      <p>© 2026 morgane marlow. all rights reserved.</p>
+      <p>london — milan — always online</p>
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════
+  <!-- ════════════════════════════════════
        JAVASCRIPT
-  ═══════════════════════════════════════ -->
+  ════════════════════════════════════ -->
   <script>
-    // ── Sticky nav blur on scroll
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 80);
-    }, { passive: true });
-
-    // ── Scroll reveal
+    // Scroll reveal
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        }
-      });
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
     }, { threshold: 0.12 });
-
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // ── Trigger hero reveals immediately (above fold)
-    document.querySelectorAll('.hero .reveal').forEach(el => {
-      setTimeout(() => el.classList.add('is-visible'), 100);
+    // Trigger hero reveals immediately (above fold)
+    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+      setTimeout(() => el.classList.add('is-visible'), 80 + i * 80);
     });
 
-    // ── Mobile menu toggle (basic)
-    function toggleMobileMenu() {
+    // Nav blur on scroll
+    const nav = document.getElementById('site-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Mobile nav toggle
+    function toggleMobileNav() {
       const pills = document.querySelector('.nav-pills');
-      if (pills.style.display === 'flex') {
-        pills.style.display = 'none';
-      } else {
-        pills.style.cssText = 'display:flex; flex-direction:column; position:absolute; top:60px; left:0; right:0; background:var(--color-off-white); padding:20px 24px; gap:10px; border-bottom:1px solid rgba(0,0,0,0.08); z-index:99;';
-      }
+      const isOpen = pills.style.display === 'flex';
+      pills.style.cssText = isOpen ? '' :
+        'display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;' +
+        'background:var(--color-honeydew);padding:20px 24px;gap:10px;' +
+        'border-bottom:1px solid rgba(0,0,0,0.07);z-index:99;';
     }
   </script>
 
