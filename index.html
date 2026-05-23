@@ -269,10 +269,9 @@
     ══════════════════════════════════════════ */
     .hero {
       background: var(--color-olive-leaf);
-      min-height: 100dvh;
       display:    flex;
-      align-items: flex-end;
-      padding:    0 var(--section-padding-x) 80px;
+      align-items: center;
+      padding:    80px var(--section-padding-x);
       position:   relative;
       overflow:   visible;
     }
@@ -321,6 +320,15 @@
     }
     .hero-body strong { color: #fff; font-weight: 600; }
     .hero-body em     { color: rgba(255,255,255,0.92); }
+    .hero-callout {
+      font-size:      16px !important;
+      font-weight:    600 !important;
+      color:          var(--color-lemon-lime) !important;
+      border-left:    3px solid var(--color-lemon-lime);
+      padding:        10px 16px;
+      background:     rgba(211,216,88,0.1);
+      border-radius:  0 8px 8px 0;
+    }
     .hero-body blockquote {
       border-left:  3px solid var(--color-lemon-lime);
       padding:      12px 18px;
@@ -951,7 +959,6 @@
        SECTION 1 — HERO
   ════════════════════════════════════ -->
   <section class="hero">
-    <div class="hero-bg-circle"></div>
     <div class="hero-inner">
 
       <div class="hero__text">
@@ -959,7 +966,8 @@
         <h1 class="hero-title reveal reveal-d1">but, why?</h1>
 
         <div class="hero-body reveal reveal-d2">
-          <p>london-based (mostly). 30-something. chronically online but genuinely trying to touch grass. my background is what you'd call the traditional path — university, an mba, international trade, a decade in the us — until my partner convinced me to build something of my own instead of applying to things that didn't want me back. now i'm here, asking questions on the internet so he doesn't have to keep answering them. curiosity isn't annoying. it's the whole point.</p>
+          <p>london-based (mostly). 30-something. chronically online but genuinely trying to touch grass. my background is what you'd call the traditional path — university, an mba, international trade, a decade in the us — until my partner convinced me to build something of my own instead of applying to things that didn't want me back. now i'm here, asking questions on the internet so he doesn't have to keep answering them.</p>
+          <p class="hero-callout">curiosity isn't annoying. it's the whole point.</p>
         </div>
 
         <div class="hero__cta reveal reveal-d3">
