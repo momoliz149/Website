@@ -3,421 +3,1186 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Morgane Marlow — Money, Simplified.</title>
+  <title>Morgane Marlow — Build the thing. Tell the story.</title>
+  <meta name="description" content="COO of AI Central Media. Writing about building companies, operator life, and the future of media." />
+  <meta property="og:title" content="Morgane Marlow — Build the thing. Tell the story." />
+  <meta property="og:description" content="COO of AI Central Media. Writing about building companies, operator life, and the future of media." />
+  <meta property="og:image" content="/img/og-image.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
 
+  <style>
+    /* ─────────────────────────────────────────
+       TOKENS
+    ───────────────────────────────────────── */
     :root {
-      --white:   #ffffff;
-      --off-white: #faf8f4;
-      --cream:   #f5f0e8;
-      --gold:    #c9a84c;
-      --gold-lt: #e8d8a8;
-      --brown:   #3b2f1e;
-      --gray:    #7a7266;
-      --border:  #e8e2d8;
-      --max:     1120px;
+      --color-burnt-orange:  #C1460B;
+      --color-acid-yellow:   #D4F04A;
+      --color-forest-green:  #1A5C2A;
+      --color-cream:         #F0EBE0;
+      --color-warm-tan:      #C4B49A;
+      --color-rich-black:    #1A1A1A;
+      --color-off-white:     #FAF8F4;
+      --color-blush-pink:    #E8C4D8;
+      --color-sage-mint:     #C4E0D4;
+      --color-deep-teal:     #2D6B6B;
+      --color-lavender:      #E8D5F0;
+
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --radius-pill: 100px;
+      --radius-card: 20px;
+
+      --section-padding-y: 120px;
+      --section-padding-x: 80px;
+      --container-max: 1280px;
     }
 
+    /* ─────────────────────────────────────────
+       RESET & BASE
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--brown); background: var(--white); -webkit-font-smoothing: antialiased; }
-
+    body {
+      font-family: var(--font-body);
+      color: var(--color-rich-black);
+      background: var(--color-off-white);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
     a { color: inherit; text-decoration: none; }
+    img { display: block; }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
+    /* ─────────────────────────────────────────
+       TYPE SCALE
+    ───────────────────────────────────────── */
+    .text-display {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 8vw, 96px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+    }
+    .text-display em {
+      font-style: italic;
+      font-weight: 400;
+    }
+    .text-h2 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.15;
+    }
+    .text-h3 {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 2.5vw, 32px);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .text-body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+    .text-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────
+       BUTTONS
+    ───────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 14px 28px;
+      border-radius: var(--radius-pill);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    .btn-primary {
+      background: var(--color-acid-yellow);
+      color: #1A1A00;
+    }
+    .btn-primary:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 20px rgba(212,240,74,0.4);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--color-rich-black);
+      border: 1.5px solid var(--color-rich-black);
+      padding: 12px 26px;
+    }
+    .btn-secondary:hover {
+      background: var(--color-rich-black);
+      color: var(--color-acid-yellow);
+    }
+
+    .btn-outline-white {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255,255,255,0.6);
+      padding: 12px 26px;
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.12); }
+
+    .btn-orange {
+      background: var(--color-burnt-orange);
+      color: #fff;
+    }
+    .btn-orange:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 20px rgba(193,70,11,0.35);
+    }
+
+    /* ─────────────────────────────────────────
+       SCROLL REVEAL
+    ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─────────────────────────────────────────
+       SECTION 1 — NAV
+    ───────────────────────────────────────── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--color-off-white);
+      transition: background 0.3s ease, backdrop-filter 0.3s ease, border-color 0.3s ease;
+      border-bottom: 0.5px solid transparent;
+    }
+    .nav--scrolled {
+      background: rgba(250, 248, 244, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-color: rgba(0,0,0,0.08);
     }
     .nav-inner {
-      max-width: var(--max); margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--section-padding-x);
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
     .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem; font-weight: 700;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
       letter-spacing: -0.01em;
+      white-space: nowrap;
     }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 2.2rem; align-items: center; }
-    .nav-links a {
-      font-size: 0.875rem; font-weight: 500; color: var(--gray);
-      transition: color 0.2s;
+    .nav-logo em {
+      font-style: italic;
+      font-weight: 400;
     }
-    .nav-links a:hover { color: var(--brown); }
-    .btn {
-      display: inline-block; padding: 0.6rem 1.4rem;
-      border-radius: 6px; font-size: 0.875rem; font-weight: 600;
-      cursor: pointer; transition: all 0.2s;
+    .nav-pills {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: nowrap;
     }
-    .btn-primary {
-      background: var(--gold); color: var(--white);
-      border: 2px solid var(--gold);
+    .nav-pill {
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      border: 1.5px solid;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
     }
-    .btn-primary:hover { background: #b5903e; border-color: #b5903e; }
-    .btn-outline {
-      background: transparent; color: var(--brown);
-      border: 2px solid var(--brown);
+    .nav-pill:hover { transform: scale(1.04); }
+    .nav-pill--outline  { border-color: #2c2c2c; color: #2c2c2c; background: transparent; }
+    .nav-pill--green    { background: var(--color-forest-green); color: var(--color-acid-yellow); border-color: var(--color-forest-green); }
+    .nav-pill--orange   { background: var(--color-burnt-orange); color: #fff; border-color: var(--color-burnt-orange); }
+    .nav-pill--teal     { background: var(--color-deep-teal); color: #fff; border-color: var(--color-deep-teal); }
+    .nav-mobile-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
     }
-    .btn-outline:hover { background: var(--brown); color: var(--white); }
-    .btn-lg { padding: 0.85rem 2rem; font-size: 1rem; border-radius: 8px; }
+    .nav-mobile-toggle span {
+      display: block; width: 22px; height: 2px;
+      background: var(--color-rich-black); border-radius: 2px;
+    }
 
-    /* ── HERO ── */
+    /* ─────────────────────────────────────────
+       SECTION 2 — HERO
+    ───────────────────────────────────────── */
     .hero {
-      background: var(--off-white);
-      padding: 96px 2rem 100px;
-      text-align: center;
+      background: var(--color-burnt-orange);
+      min-height: 100dvh;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      padding: var(--section-padding-y) var(--section-padding-x) 100px;
     }
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 900; line-height: 1.08;
-      letter-spacing: -0.03em;
-      max-width: 780px; margin: 0 auto 1.4rem;
-    }
-    .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero p {
-      font-size: 1.15rem; color: var(--gray); font-weight: 300;
-      max-width: 540px; margin: 0 auto 2.4rem; line-height: 1.7;
-    }
-    .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .hero-sub {
-      margin-top: 1.2rem;
-      font-size: 0.8rem; color: var(--gray);
-    }
-
-    /* ── PRESS STRIP ── */
-    .press {
-      padding: 40px 2rem;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      background: var(--white);
-    }
-    .press-label {
-      text-align: center;
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--gray);
-      margin-bottom: 1.6rem;
-    }
-    .press-logos {
-      max-width: var(--max); margin: 0 auto;
-      display: flex; align-items: center; justify-content: center;
-      gap: 3rem; flex-wrap: wrap;
-    }
-    .press-logos span {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem; font-weight: 700;
-      color: #c0b8ac; letter-spacing: 0.04em;
-    }
-
-    /* ── SECTION SHARED ── */
-    section { padding: 96px 2rem; }
-    .section-inner { max-width: var(--max); margin: 0 auto; }
-    .section-label {
-      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 700; line-height: 1.18; letter-spacing: -0.02em;
-      margin-bottom: 1.2rem;
-    }
-    .section-title em { font-style: italic; }
-    .section-body {
-      font-size: 1.05rem; color: var(--gray); line-height: 1.75;
-      max-width: 560px;
-    }
-
-    /* ── FEATURES ── */
-    .features { background: var(--cream); }
-    .features-header { text-align: center; margin-bottom: 4rem; }
-    .features-header .section-body { max-width: 520px; margin: 0 auto; }
-    .features-grid {
+    .hero-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      width: 100%;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+      align-items: flex-end;
+      gap: 40px;
     }
-    .feature-card {
-      background: var(--white); border-radius: 14px;
-      padding: 2.4rem 2rem;
-      border: 1px solid var(--border);
+    .hero__text { position: relative; z-index: 2; }
+    .hero__text .text-label {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+      display: block;
     }
-    .feature-icon {
-      width: 48px; height: 48px; border-radius: 12px;
-      background: var(--gold-lt);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem; margin-bottom: 1.4rem;
+    .hero__text .text-display { color: #fff; margin-bottom: 24px; }
+    .hero__text .text-body {
+      color: rgba(255,255,255,0.8);
+      max-width: 380px;
+      margin-bottom: 40px;
     }
-    .feature-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.25rem; font-weight: 700;
-      margin-bottom: 0.75rem;
+    .hero__photo {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
     }
-    .feature-card p { font-size: 0.95rem; color: var(--gray); line-height: 1.7; }
+    /* Placeholder for hero photo — replace with actual PNG cutout */
+    .hero__photo-placeholder {
+      width: 440px;
+      height: 560px;
+      border-radius: 24px 24px 0 0;
+      background: linear-gradient(160deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.04) 100%);
+      border: 1.5px solid rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .hero__photo-placeholder::after {
+      content: 'Photo\A(PNG cutout\Agoes here)';
+      white-space: pre;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.05em;
+    }
+    .hero__photo img {
+      position: absolute;
+      right: 8%;
+      bottom: 0;
+      height: 95%;
+      max-height: 720px;
+      object-fit: contain;
+      object-position: bottom;
+      z-index: 10;
+    }
+    /* Decorative circle */
+    .hero-circle {
+      position: absolute;
+      top: -180px; right: -180px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      pointer-events: none;
+    }
 
-    /* ── SPLIT SECTION ── */
-    .split { background: var(--white); }
-    .split-inner {
-      max-width: var(--max); margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+    /* ─────────────────────────────────────────
+       SECTION 3 — CREDIBILITY
+    ───────────────────────────────────────── */
+    .credibility {
+      background: var(--color-cream);
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+    .credibility-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
       align-items: center;
     }
-    .split-visual {
-      background: var(--cream); border-radius: 20px;
-      aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      border: 1px solid var(--border);
-      position: relative; overflow: hidden;
+    .credibility__statement .text-h2 { margin-bottom: 32px; }
+    .credibility__stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
-    .split-visual-inner {
-      text-align: center; padding: 2rem;
+    .stat-card {
+      background: var(--color-burnt-orange);
+      border-radius: var(--radius-card);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transition: transform 0.2s ease;
     }
-    .split-visual-inner .big-stat {
-      font-family: 'Playfair Display', serif;
-      font-size: 4.5rem; font-weight: 900; color: var(--gold);
-      line-height: 1; letter-spacing: -0.04em;
+    .stat-card:hover { transform: translateY(-4px); }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--color-acid-yellow);
+      line-height: 1;
     }
-    .split-visual-inner .stat-label {
-      font-size: 0.95rem; color: var(--gray); margin-top: 0.6rem;
-    }
-    .split-content .section-body { margin-bottom: 2rem; }
-    .pill-list { display: flex; flex-direction: column; gap: 0.75rem; }
-    .pill {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-size: 0.9rem; color: var(--brown);
-    }
-    .pill-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: var(--gold); flex-shrink: 0;
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+      font-weight: 400;
     }
 
-    /* ── TESTIMONIALS ── */
-    .testimonials { background: var(--brown); }
-    .testimonials .section-label { color: var(--gold-lt); }
-    .testimonials .section-title { color: var(--white); }
-    .testimonials-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem; margin-top: 3.5rem;
+    /* ─────────────────────────────────────────
+       SECTION 4 — PATHS
+    ───────────────────────────────────────── */
+    .paths {
+      background: var(--color-lavender);
+      padding: var(--section-padding-y) var(--section-padding-x);
+      text-align: center;
     }
-    .testimonial-card {
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 14px; padding: 2rem;
+    .paths-inner { max-width: var(--container-max); margin: 0 auto; }
+    .paths .text-label { margin-bottom: 16px; display: block; color: #5a3a6a; }
+    .paths-headline {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 60px;
+      color: var(--color-rich-black);
     }
-    .testimonial-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
-    .testimonial-card p {
-      font-size: 0.95rem; color: rgba(255,255,255,0.8);
-      line-height: 1.75; font-style: italic; margin-bottom: 1.4rem;
+    .path-cards-wrapper {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
     }
-    .testimonial-author { font-size: 0.8rem; color: var(--gold-lt); font-weight: 600; }
+    .path-card {
+      border-radius: var(--radius-card);
+      padding: 36px 28px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1;
+      max-width: 320px;
+      transition: transform 0.25s ease, z-index 0s;
+      cursor: pointer;
+    }
+    .path-card:nth-child(1) { transform: rotate(-4deg) translateX(20px); z-index: 1; }
+    .path-card:nth-child(2) { transform: rotate(0deg) translateY(-20px); z-index: 3; }
+    .path-card:nth-child(3) { transform: rotate(3deg) translateX(-20px); z-index: 2; }
+    .path-card:hover        { transform: rotate(0deg) translateY(-10px) scale(1.03); z-index: 10; }
+    .path-card--green  { background: var(--color-forest-green); }
+    .path-card--orange { background: var(--color-burnt-orange); }
+    .path-card--tan    { background: var(--color-warm-tan); }
+    .path-card p {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 24px;
+    }
+    .path-card--green p  { color: var(--color-acid-yellow); }
+    .path-card--orange p { color: #fff; }
+    .path-card--tan p    { color: var(--color-rich-black); }
+    .path-card-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      align-self: flex-start;
+      border: 1.5px solid rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.1);
+      transition: background 0.15s ease;
+    }
+    .path-card-btn:hover { background: rgba(255,255,255,0.2); }
+    .path-card--tan .path-card-btn {
+      border-color: rgba(0,0,0,0.2);
+      color: var(--color-rich-black);
+      background: rgba(0,0,0,0.06);
+    }
+    .path-card--tan .path-card-btn:hover { background: rgba(0,0,0,0.12); }
 
-    /* ── NEWSLETTER ── */
-    .newsletter { background: var(--off-white); text-align: center; }
-    .newsletter .section-title { margin-bottom: 0.8rem; }
-    .newsletter .section-body { max-width: 480px; margin: 0 auto 2.4rem; }
-    .signup-form {
-      display: flex; gap: 0.75rem; max-width: 460px;
-      margin: 0 auto; flex-wrap: wrap; justify-content: center;
+    /* ─────────────────────────────────────────
+       SECTION 5 — ABOUT STATEMENT
+    ───────────────────────────────────────── */
+    .about-statement {
+      position: relative;
+      overflow: hidden;
+      min-height: 80vh;
+      display: flex;
+      align-items: flex-end;
     }
-    .signup-form input {
-      flex: 1; min-width: 220px;
-      padding: 0.85rem 1.2rem;
-      border: 1.5px solid var(--border); border-radius: 8px;
-      font-size: 0.95rem; font-family: 'Inter', sans-serif;
-      background: var(--white); color: var(--brown);
-      outline: none; transition: border-color 0.2s;
+    .about-statement__bg {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, #2a1a0e 0%, #4a2a14 40%, #1a1a1a 100%);
+      z-index: 0;
     }
-    .signup-form input:focus { border-color: var(--gold); }
-    .signup-form input::placeholder { color: #b5ae9f; }
-    .newsletter-note { font-size: 0.78rem; color: var(--gray); margin-top: 1rem; }
+    /* Placeholder pattern — replace .about-statement__bg with actual img tag */
+    .about-statement__bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 50%, rgba(193,70,11,0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(212,240,74,0.1) 0%, transparent 40%);
+      z-index: 1;
+    }
+    .about-statement__overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 2;
+    }
+    .about-statement__content {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: var(--section-padding-y) var(--section-padding-x);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 60px;
+    }
+    .about-statement__left { flex: 1; }
+    .about-statement__left .text-h2 { color: #fff; }
+    .about-statement__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 16px;
+      max-width: 300px;
+      text-align: right;
+    }
+    .about-statement__right p {
+      color: rgba(255,255,255,0.75);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    /* Photo note overlay */
+    .about-photo-note {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 13px;
+      color: rgba(255,255,255,0.25);
+      text-align: center;
+      font-family: var(--font-body);
+      letter-spacing: 0.05em;
+      z-index: 3;
+      pointer-events: none;
+    }
 
-    /* ── FOOTER ── */
+    /* ─────────────────────────────────────────
+       SECTION 6 — NEWSLETTER CTA
+    ───────────────────────────────────────── */
+    .newsletter-cta {
+      background: var(--color-forest-green);
+      padding: var(--section-padding-y) var(--section-padding-x);
+      text-align: center;
+    }
+    .newsletter-cta-inner { max-width: var(--container-max); margin: 0 auto; }
+    .newsletter-cta .text-label {
+      color: var(--color-acid-yellow);
+      margin-bottom: 20px;
+      display: block;
+    }
+    .newsletter-cta-headline {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      color: #fff;
+      max-width: 680px;
+      margin: 0 auto 24px;
+      line-height: 1.1;
+    }
+    .newsletter-cta-body {
+      color: rgba(255,255,255,0.7);
+      max-width: 420px;
+      margin: 0 auto 44px;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+    .email-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .email-input {
+      padding: 14px 24px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 15px;
+      width: 300px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .email-input::placeholder { color: rgba(255,255,255,0.45); }
+    .email-input:focus { border-color: var(--color-acid-yellow); }
+    .newsletter-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ─────────────────────────────────────────
+       SECTION 7 — FEATURED WRITING
+    ───────────────────────────────────────── */
+    .featured-writing {
+      background: var(--color-off-white);
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+    .featured-writing-inner { max-width: var(--container-max); margin: 0 auto; }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+    }
+    .section-header .text-label { color: #888; }
+    .writing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .writing-card {
+      background: var(--color-cream);
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .writing-card:hover { transform: translateY(-6px); }
+    .writing-card__tag {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-burnt-orange);
+    }
+    .writing-card__title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: var(--color-rich-black);
+    }
+    .writing-card__excerpt {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #666;
+      line-height: 1.65;
+      flex: 1;
+    }
+    .writing-card__link {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-burnt-orange);
+      align-self: flex-start;
+    }
+    .writing-card__link:hover { text-decoration: underline; }
+
+    /* ─────────────────────────────────────────
+       SECTION 8 — SPEAKING
+    ───────────────────────────────────────── */
+    .speaking {
+      background: var(--color-blush-pink);
+      padding: var(--section-padding-y) var(--section-padding-x);
+    }
+    .speaking-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .speaking__left .text-label { margin-bottom: 16px; display: block; color: #7a3a5a; }
+    .speaking__left .text-h3 { margin-bottom: 20px; }
+    .speaking__left .text-body { margin-bottom: 36px; color: #4a2a3a; }
+    .speaking__topics { padding-top: 8px; }
+    .topic-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .topic-list li {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      font-style: italic;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      color: var(--color-rich-black);
+      transition: color 0.2s ease, padding-left 0.2s ease;
+      cursor: default;
+    }
+    .topic-list li:first-child { border-top: 1px solid rgba(0,0,0,0.12); }
+    .topic-list li:hover {
+      color: var(--color-burnt-orange);
+      padding-left: 12px;
+    }
+
+    /* ─────────────────────────────────────────
+       SECTION 9 — PHOTO STRIP
+    ───────────────────────────────────────── */
+    .photo-strip {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+    .photo-strip-item {
+      width: 100%;
+      height: 280px;
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-strip-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+      display: block;
+    }
+    .photo-strip-item:hover img { transform: scale(1.06); }
+    /* Placeholder for strip when no photos */
+    .photo-strip-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─────────────────────────────────────────
+       SECTION 10 — FOOTER
+    ───────────────────────────────────────── */
     footer {
-      background: var(--brown); color: rgba(255,255,255,0.6);
-      padding: 3rem 2rem;
+      background: var(--color-cream);
+      padding-top: 80px;
+      overflow: hidden;
     }
-    .footer-inner {
-      max-width: var(--max); margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1.5rem;
+    .footer__nav {
+      display: grid;
+      grid-template-columns: repeat(4, auto);
+      justify-content: start;
+      gap: 60px;
+      padding: 0 var(--section-padding-x) 60px;
+      max-width: var(--container-max);
+      margin: 0 auto;
     }
-    .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.1rem; font-weight: 700; color: var(--white);
+    .footer__col-title {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #999;
+      margin-bottom: 16px;
     }
-    .footer-logo span { color: var(--gold); }
-    .footer-links { display: flex; gap: 1.8rem; flex-wrap: wrap; }
-    .footer-links a { font-size: 0.85rem; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--white); }
-    .footer-copy { font-size: 0.8rem; }
+    .footer__col a {
+      display: block;
+      font-size: 14px;
+      color: var(--color-rich-black);
+      margin-bottom: 10px;
+      transition: color 0.15s ease;
+    }
+    .footer__col a:hover { color: var(--color-burnt-orange); }
+    .footer__col--social {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+    .footer__col--social .btn-secondary { font-size: 13px; }
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 11vw, 140px);
+      font-weight: 700;
+      color: var(--color-burnt-orange);
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      padding: 0 var(--section-padding-x);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .footer-wordmark em {
+      font-style: italic;
+      font-weight: 400;
+      margin: 0 0.12em;
+    }
+    .footer__strip {
+      background: var(--color-burnt-orange);
+      color: rgba(255,255,255,0.7);
+      font-size: 12px;
+      font-family: var(--font-body);
+      padding: 20px var(--section-padding-x);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 60px;
+    }
 
-    /* ── RESPONSIVE ── */
+    /* ─────────────────────────────────────────
+       RESPONSIVE — MOBILE < 768px
+    ───────────────────────────────────────── */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .split-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-      .split-inner .split-visual { order: -1; }
+      :root {
+        --section-padding-y: 72px;
+        --section-padding-x: 24px;
+      }
+      /* Nav */
+      .nav-inner { height: 60px; }
+      .nav-pills { display: none; }
+      .nav-mobile-toggle { display: flex; }
+
+      /* Hero */
+      .hero { min-height: auto; padding-bottom: 60px; align-items: flex-start; padding-top: 60px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+      .hero__photo { justify-content: center; }
+      .hero__photo-placeholder { width: 100%; height: 300px; }
+
+      /* Credibility */
+      .credibility-inner { grid-template-columns: 1fr; gap: 40px; }
+      .credibility__stats { grid-template-columns: repeat(2, 1fr); }
+      .stat-number { font-size: 32px; }
+
+      /* Paths */
+      .path-cards-wrapper { flex-direction: column; align-items: center; gap: 16px; }
+      .path-card { max-width: 100%; }
+      .path-card:nth-child(1),
+      .path-card:nth-child(2),
+      .path-card:nth-child(3) { transform: none; }
+
+      /* About statement */
+      .about-statement__content { flex-direction: column; align-items: flex-start; }
+      .about-statement__right { align-items: flex-start; text-align: left; }
+
+      /* Writing */
+      .writing-grid { grid-template-columns: 1fr; }
+
+      /* Speaking */
+      .speaking-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      /* Photo strip */
+      .photo-strip { grid-template-columns: repeat(3, 1fr); }
+      .photo-strip-item:nth-child(n+4) { display: none; }
+      .photo-strip-item { height: 200px; }
+
+      /* Footer */
+      .footer__nav { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-wordmark { font-size: 18vw; }
+      .footer__strip { flex-direction: column; gap: 6px; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — NAV
+  ═══════════════════════════════════════ -->
+  <nav class="nav" id="nav">
     <div class="nav-inner">
-      <div class="nav-logo">Morgane<span>.</span></div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#podcast">Podcast</a>
-        <a href="#essays">Essays</a>
-        <a href="#resources">Resources</a>
-        <a href="#newsletter" class="btn btn-primary">Join the Newsletter</a>
+      <a href="/" class="nav-logo"><em>Morgane</em> Marlow</a>
+
+      <div class="nav-pills">
+        <a href="#about" class="nav-pill nav-pill--outline">About</a>
+        <a href="#writing" class="nav-pill nav-pill--green">Writing ↓</a>
+        <a href="#newsletter" class="nav-pill nav-pill--orange">Newsletter</a>
+        <a href="#speaking" class="nav-pill nav-pill--outline">Speaking</a>
+        <a href="#speaking" class="nav-pill nav-pill--teal">Work With Me</a>
       </div>
+
+      <a href="#newsletter" class="btn btn-primary">Subscribe →</a>
+
+      <button class="nav-mobile-toggle" aria-label="Menu" onclick="toggleMobileMenu()">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — HERO
+  ═══════════════════════════════════════ -->
   <section class="hero">
-    <span class="hero-eyebrow">Personal Finance for Real Life</span>
-    <h1>Think <em>bigger</em> about your money.</h1>
-    <p>A weekly newsletter helping you build wealth without sacrificing the life you actually want to live.</p>
-    <div class="hero-cta">
-      <a href="#newsletter" class="btn btn-primary btn-lg">Subscribe — It's Free</a>
-      <a href="#about" class="btn btn-outline btn-lg">Learn More</a>
-    </div>
-    <p class="hero-sub">Join 200,000+ readers every week.</p>
-  </section>
-
-  <!-- PRESS -->
-  <div class="press">
-    <p class="press-label">As Featured In</p>
-    <div class="press-logos">
-      <span>Forbes</span>
-      <span>Business Insider</span>
-      <span>The New York Times</span>
-      <span>Refinery29</span>
-      <span>MarketWatch</span>
-    </div>
-  </div>
-
-  <!-- FEATURES -->
-  <section class="features" id="about">
-    <div class="section-inner">
-      <div class="features-header">
-        <p class="section-label">What You'll Get</p>
-        <h2 class="section-title">Everything you need to grow your wealth.</h2>
-        <p class="section-body">No jargon, no gatekeeping. Just clear, actionable personal finance delivered straight to your inbox.</p>
+    <div class="hero-circle"></div>
+    <div class="hero-inner">
+      <div class="hero__text">
+        <span class="text-label reveal" style="color:rgba(255,255,255,0.6);">
+          Strategy · Media · Operations
+        </span>
+        <h1 class="text-display reveal reveal-delay-1" style="color:#fff; margin-top:16px;">
+          Build the thing.<br><em>Tell</em> the story.
+        </h1>
+        <p class="text-body reveal reveal-delay-2" style="color:rgba(255,255,255,0.8); max-width:380px; margin-top:24px;">
+          COO of AI Central Media. Writing about building companies,
+          operator life, and the future of media.
+        </p>
+        <a href="#newsletter" class="btn btn-primary reveal reveal-delay-3" style="margin-top:40px;">
+          Join 300,000+ readers →
+        </a>
       </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">📬</div>
-          <h3>Weekly Newsletter</h3>
-          <p>Every Monday, a deep-dive into one money topic that actually matters — investing, taxes, real estate, and more.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎙️</div>
-          <h3>The Podcast</h3>
-          <p>Long-form conversations with experts and everyday people who have figured out how to build real, lasting wealth.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📖</div>
-          <h3>In-Depth Essays</h3>
-          <p>Research-backed deep dives on the financial moves that move the needle — written so anyone can understand them.</p>
-        </div>
+
+      <div class="hero__photo reveal reveal-delay-2">
+        <!--
+          Replace the placeholder below with:
+          <img src="/img/morgane-hero.png" alt="Morgane Marlow" />
+          (PNG with transparent background, min 1200px tall)
+        -->
+        <div class="hero__photo-placeholder"></div>
       </div>
     </div>
   </section>
 
-  <!-- SPLIT -->
-  <section class="split" id="resources">
-    <div class="split-inner">
-      <div class="split-visual">
-        <div class="split-visual-inner">
-          <div class="big-stat">$1.2M</div>
-          <div class="stat-label">Average net worth target our readers work toward</div>
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — CREDIBILITY
+  ═══════════════════════════════════════ -->
+  <section class="credibility" id="about">
+    <div class="credibility-inner">
+      <div class="credibility__statement reveal">
+        <h2 class="text-h2">
+          Some operators run the business.<br>
+          I <em>also write about</em> it.
+        </h2>
+        <a href="#about" class="btn btn-secondary" style="margin-top:32px;">Meet Morgane →</a>
+      </div>
+
+      <div class="credibility__stats">
+        <div class="stat-card reveal reveal-delay-1">
+          <span class="stat-number">300K+</span>
+          <span class="stat-label">Combined readers</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+          <span class="stat-number">178K</span>
+          <span class="stat-label">LinkedIn followers</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+          <span class="stat-number">75K+</span>
+          <span class="stat-label">Newsletter subscribers</span>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+          <span class="stat-number">Seed</span>
+          <span class="stat-label">AI Central Media</span>
         </div>
       </div>
-      <div class="split-content">
-        <p class="section-label">Why It Works</p>
-        <h2 class="section-title">Small decisions, <em>compounded.</em></h2>
-        <p class="section-body">Wealth isn't built with one big move. It's built week by week, with the right information at the right moment. That's exactly what we deliver.</p>
-        <ul class="pill-list">
-          <li class="pill"><span class="pill-dot"></span>401(k) optimization strategies</li>
-          <li class="pill"><span class="pill-dot"></span>Tax-advantaged investing explained</li>
-          <li class="pill"><span class="pill-dot"></span>Real estate vs. index funds breakdowns</li>
-          <li class="pill"><span class="pill-dot"></span>Side income and business finances</li>
-          <li class="pill"><span class="pill-dot"></span>Navigating financial independence early</li>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4 — PATHS
+  ═══════════════════════════════════════ -->
+  <section class="paths">
+    <div class="paths-inner">
+      <span class="text-label reveal">Start somewhere</span>
+      <h2 class="paths-headline reveal reveal-delay-1">What do you want to explore first?</h2>
+
+      <div class="path-cards-wrapper">
+        <div class="path-card path-card--green reveal reveal-delay-1">
+          <p>Understand how AI is changing media.</p>
+          <a href="#writing" class="path-card-btn">Show me →</a>
+        </div>
+        <div class="path-card path-card--orange reveal reveal-delay-2">
+          <p>Read about building companies from the inside.</p>
+          <a href="#writing" class="path-card-btn">Take me there →</a>
+        </div>
+        <div class="path-card path-card--tan reveal reveal-delay-3">
+          <p>Work smarter as an operator.</p>
+          <a href="#writing" class="path-card-btn">I'm ready →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 5 — ABOUT STATEMENT
+  ═══════════════════════════════════════ -->
+  <section class="about-statement">
+    <!--
+      Replace .about-statement__bg with:
+      <img src="/img/morgane-editorial.jpg"
+           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;"
+           alt="" />
+      (High-contrast landscape editorial photo, min 2400px wide)
+    -->
+    <div class="about-statement__bg"></div>
+    <div class="about-statement__bg-pattern"></div>
+    <div class="about-statement__overlay"></div>
+    <div class="about-photo-note">Editorial photo<br>goes here</div>
+
+    <div class="about-statement__content">
+      <div class="about-statement__left reveal">
+        <h2 class="text-h2">
+          Some people run the numbers.<br>
+          I run the <em>whole thing</em>.
+        </h2>
+      </div>
+      <div class="about-statement__right reveal reveal-delay-2">
+        <p>I'd rather ask the questions that change how you think about the work.</p>
+        <a href="#newsletter" class="btn btn-primary" style="margin-top:16px;">Meet Morgane →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 6 — NEWSLETTER CTA
+  ═══════════════════════════════════════ -->
+  <section class="newsletter-cta" id="newsletter">
+    <div class="newsletter-cta-inner">
+      <span class="text-label reveal">Free · Weekly · No fluff</span>
+      <h2 class="newsletter-cta-headline reveal reveal-delay-1">
+        The newsletter operators actually read.
+      </h2>
+      <p class="newsletter-cta-body reveal reveal-delay-2">
+        AI, media, and what's actually working — direct to your inbox.
+        Join 300,000+ readers.
+      </p>
+      <form class="email-form reveal reveal-delay-3" onsubmit="return false;">
+        <input type="email" class="email-input" placeholder="your@email.com" />
+        <button type="submit" class="btn btn-primary">Subscribe →</button>
+      </form>
+      <p class="newsletter-note reveal reveal-delay-4">No spam, ever. Unsubscribe anytime.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 7 — FEATURED WRITING
+  ═══════════════════════════════════════ -->
+  <section class="featured-writing" id="writing">
+    <div class="featured-writing-inner">
+      <div class="section-header reveal">
+        <span class="text-label">From the newsletter</span>
+        <a href="#writing" class="btn btn-secondary" style="font-size:13px; padding:10px 20px;">See all →</a>
+      </div>
+
+      <div class="writing-grid">
+        <article class="writing-card reveal reveal-delay-1">
+          <div class="writing-card__tag">AI & Media</div>
+          <h3 class="writing-card__title">Why every media company is now a tech company</h3>
+          <p class="writing-card__excerpt">
+            The lines between editorial and engineering have collapsed.
+            Here's what operators need to understand before they get left behind.
+          </p>
+          <a href="#" class="writing-card__link">Read →</a>
+        </article>
+
+        <article class="writing-card reveal reveal-delay-2">
+          <div class="writing-card__tag">Operator Life</div>
+          <h3 class="writing-card__title">The decisions no one tells you you'll have to make</h3>
+          <p class="writing-card__excerpt">
+            Building from the inside looks nothing like the highlight reel.
+            Here's what the first 18 months of operating really feel like.
+          </p>
+          <a href="#" class="writing-card__link">Read →</a>
+        </article>
+
+        <article class="writing-card reveal reveal-delay-3">
+          <div class="writing-card__tag">Strategy</div>
+          <h3 class="writing-card__title">Revenue models that actually work for modern media</h3>
+          <p class="writing-card__excerpt">
+            Ads, subscriptions, events, licensing — the playbook has changed.
+            What's working now and what's already obsolete.
+          </p>
+          <a href="#" class="writing-card__link">Read →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 8 — SPEAKING
+  ═══════════════════════════════════════ -->
+  <section class="speaking" id="speaking">
+    <div class="speaking-inner">
+      <div class="speaking__left reveal">
+        <span class="text-label">Speaking & Partnerships</span>
+        <h2 class="text-h3" style="margin-top:16px;">
+          Bring a different<br>perspective to your stage.
+        </h2>
+        <p class="text-body" style="margin-top:20px;">
+          I speak on AI and media, operator strategy, building
+          in public, and what it actually takes to scale a modern
+          media company from the inside.
+        </p>
+        <a href="#newsletter" class="btn btn-orange" style="margin-top:36px;">Get in touch →</a>
+      </div>
+
+      <div class="speaking__topics reveal reveal-delay-2">
+        <ul class="topic-list">
+          <li>AI & the future of media</li>
+          <li>Building an audience from zero</li>
+          <li>Operator vs founder mindset</li>
+          <li>Revenue models for creators</li>
+          <li>Strategic partnerships</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
-    <div class="section-inner">
-      <p class="section-label">Reader Stories</p>
-      <h2 class="section-title">It works. Really.</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"I went from living paycheck to paycheck to maxing out my Roth IRA — all because of what I learned from this newsletter."</p>
-          <div class="testimonial-author">— Sarah K., 31</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"Finally a finance resource that doesn't make me feel stupid. I've recommended it to every single person I know."</p>
-          <div class="testimonial-author">— Marcus T., 28</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p>"I paid off $40k in student loans in 18 months using the frameworks from these essays. Life-changing is not an understatement."</p>
-          <div class="testimonial-author">— Priya M., 34</div>
-        </div>
+  <!-- ═══════════════════════════════════════
+       SECTION 9 — PHOTO STRIP
+  ═══════════════════════════════════════ -->
+  <div class="photo-strip" aria-label="Photo gallery">
+    <!--
+      Replace each .photo-strip-item with:
+      <div class="photo-strip-item">
+        <img src="/img/gallery-N.jpg" alt="" />
       </div>
+      (JPG, square or landscape, min 600px each × 6 images)
+    -->
+    <div class="photo-strip-item" style="background:#2a1810;">
+      <div class="photo-strip-placeholder">Photo 1</div>
     </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="newsletter" id="newsletter">
-    <div class="section-inner">
-      <p class="section-label">Join the Community</p>
-      <h2 class="section-title">Your future self will thank you.</h2>
-      <p class="section-body">Get the weekly newsletter that 200,000 readers rely on to make smarter money decisions. Free, always.</p>
-      <form class="signup-form" onsubmit="return false;">
-        <input type="email" placeholder="Enter your email address" />
-        <button type="submit" class="btn btn-primary btn-lg">Subscribe Free</button>
-      </form>
-      <p class="newsletter-note">No spam, ever. Unsubscribe anytime.</p>
+    <div class="photo-strip-item" style="background:#1A5C2A;">
+      <div class="photo-strip-placeholder">Photo 2</div>
     </div>
-  </section>
+    <div class="photo-strip-item" style="background:#C1460B;">
+      <div class="photo-strip-placeholder">Photo 3</div>
+    </div>
+    <div class="photo-strip-item" style="background:#2D6B6B;">
+      <div class="photo-strip-placeholder">Photo 4</div>
+    </div>
+    <div class="photo-strip-item" style="background:#5a3a6a;">
+      <div class="photo-strip-placeholder">Photo 5</div>
+    </div>
+    <div class="photo-strip-item" style="background:#3a2010;">
+      <div class="photo-strip-placeholder">Photo 6</div>
+    </div>
+  </div>
 
-  <!-- FOOTER -->
+  <!-- ═══════════════════════════════════════
+       SECTION 10 — FOOTER
+  ═══════════════════════════════════════ -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-logo">Morgane<span>.</span></div>
-      <div class="footer-links">
+    <div class="footer__nav">
+      <div class="footer__col">
+        <p class="footer__col-title">Site</p>
         <a href="#about">About</a>
-        <a href="#podcast">Podcast</a>
-        <a href="#essays">Essays</a>
-        <a href="#resources">Resources</a>
+        <a href="#writing">Writing</a>
         <a href="#newsletter">Newsletter</a>
       </div>
-      <p class="footer-copy">© 2026 Morgane Marlow. All rights reserved.</p>
+      <div class="footer__col">
+        <p class="footer__col-title">Work</p>
+        <a href="#speaking">Speaking</a>
+        <a href="#speaking">Work With Me</a>
+        <a href="https://aicentral.com" target="_blank" rel="noopener">AI Central Media ↗</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">Connect</p>
+        <a href="https://linkedin.com/in/morganemarlow" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="#newsletter">Newsletter ↗</a>
+      </div>
+      <div class="footer__col footer__col--social">
+        <p class="footer__col-title">Follow</p>
+        <a href="https://linkedin.com/in/morganemarlow" target="_blank" rel="noopener" class="btn btn-secondary" style="font-size:13px; padding:10px 20px;">Follow on LinkedIn ↗</a>
+        <a href="#newsletter" class="btn btn-secondary" style="font-size:13px; padding:10px 20px; margin-top:8px;">Subscribe to Newsletter ↗</a>
+      </div>
+    </div>
+
+    <div class="footer-wordmark">
+      Morgane <em>with</em> Purpose
+    </div>
+
+    <div class="footer__strip">
+      <p>© 2026 Morgane Marlow. All rights reserved.</p>
+      <p>Built with intention.</p>
     </div>
   </footer>
+
+  <!-- ═══════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════ -->
+  <script>
+    // ── Sticky nav blur on scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // ── Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // ── Trigger hero reveals immediately (above fold)
+    document.querySelectorAll('.hero .reveal').forEach(el => {
+      setTimeout(() => el.classList.add('is-visible'), 100);
+    });
+
+    // ── Mobile menu toggle (basic)
+    function toggleMobileMenu() {
+      const pills = document.querySelector('.nav-pills');
+      if (pills.style.display === 'flex') {
+        pills.style.display = 'none';
+      } else {
+        pills.style.cssText = 'display:flex; flex-direction:column; position:absolute; top:60px; left:0; right:0; background:var(--color-off-white); padding:20px 24px; gap:10px; border-bottom:1px solid rgba(0,0,0,0.08); z-index:99;';
+      }
+    }
+  </script>
 
 </body>
 </html>
