@@ -816,6 +816,29 @@
     }
 
     /* ─────────────────────────────────────────
+       TEXT TRANSFORM
+    ───────────────────────────────────────── */
+
+    /* Neue Montreal → always lowercase */
+    body { text-transform: lowercase; }
+
+    /* Tan Mon Cheri → always UPPERCASE (overrides body) */
+    .text-display,
+    .text-h2,
+    .text-h3,
+    .stat-number,
+    .footer-wordmark,
+    .paths-headline,
+    .newsletter-cta-headline,
+    .path-card p,
+    .writing-card__title,
+    .topic-list li,
+    .nav-logo,
+    h1, h2, h3 {
+      text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────
        RESPONSIVE — MOBILE < 768px
     ───────────────────────────────────────── */
     @media (max-width: 768px) {
