@@ -23,13 +23,18 @@
       font-style:  normal;
       font-display: swap;
     }
+    /* Force synthesised italic from the regular file */
     @font-face {
       font-family: 'Tan Mon Cheri';
-      src: url('/fonts/TanMonCheriItalic.woff2') format('woff2'),
-           url('/fonts/TanMonCheriItalic.woff')  format('woff');
+      src: url('/fonts/TanMonCheri.woff2') format('woff2'),
+           url('/fonts/TanMonCheri.woff')  format('woff');
       font-weight: normal;
       font-style:  italic;
       font-display: swap;
+    }
+    /* Apply a visual slant since no true italic file exists */
+    em, i, .text-h2, [style*="italic"] {
+      font-style: oblique 12deg !important;
     }
   </style>
 
