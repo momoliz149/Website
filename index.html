@@ -434,7 +434,7 @@
       max-width: var(--container-max);
       margin:    0 auto;
       display:   grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 3fr 2fr;
       gap:       80px;
       align-items: start;
     }
@@ -443,7 +443,10 @@
       display:      block;
       margin-bottom: 16px;
     }
-    .newsletter-intro__left .text-h2 { margin-bottom: 20px; }
+    .newsletter-intro__left .text-h2 {
+      margin-bottom: 20px;
+      font-size: clamp(28px, 3.2vw, 46px);
+    }
     .newsletter-intro__left .text-body {
       color:     var(--color-olive-dark);
       max-width: 420px;
