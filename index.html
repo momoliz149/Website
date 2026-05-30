@@ -35,23 +35,26 @@
        TOKENS
     ══════════════════════════════════════════ */
     :root {
-      /* Palette */
-      --color-honeydew:     #F8FFED;
-      --color-lemon-lime:   #D3D858;
-      --color-sweet-peony:  #CE75A1;
-      --color-icy-blue:     #B5DCFD;
-      --color-olive-leaf:   #585B0A;
-      --color-olive-dark:   #2B2D00;
-      --color-cream:        #EFF9DC;
+      /* Palette — Parchment & Rich Mahogany */
+      --color-parchment:    #EEEDE9;   /* page bg, nav, light sections     */
+      --color-parchment-lt: #F7F6F2;   /* card backgrounds, alt sections   */
+      --color-mahogany:     #371B17;   /* hero, subscribe, text, accents   */
 
-      /* Semantic aliases — brief names kept for clarity */
-      --color-burnt-orange: #585B0A;
-      --color-acid-yellow:  #D3D858;
-      --color-forest-green: #CE75A1;
-      --color-off-white:    #F8FFED;
-      --color-blush-pink:   #B5DCFD;
-      --color-rich-black:   #2B2D00;
-      --color-warm-tan:     #B5DCFD;
+      /* Semantic aliases */
+      --color-honeydew:     #EEEDE9;   /* → Parchment                      */
+      --color-lemon-lime:   #EEEDE9;   /* → Parchment (btn on dark bg)     */
+      --color-sweet-peony:  #371B17;   /* → Mahogany (subscribe section)   */
+      --color-icy-blue:     #F7F6F2;   /* → Parchment-lt                   */
+      --color-olive-leaf:   #371B17;   /* → Mahogany                       */
+      --color-olive-dark:   #371B17;   /* → Mahogany (body text)           */
+      --color-cream:        #F7F6F2;   /* → Parchment-lt                   */
+      --color-burnt-orange: #371B17;
+      --color-acid-yellow:  #EEEDE9;
+      --color-forest-green: #371B17;
+      --color-off-white:    #EEEDE9;
+      --color-blush-pink:   #F7F6F2;
+      --color-rich-black:   #371B17;
+      --color-warm-tan:     #F7F6F2;
 
       /* Fonts */
       --font-display: 'Relationship of Melodrame', Georgia, serif;
@@ -150,31 +153,44 @@
     }
     .btn:active { transform: scale(0.97); }
 
+    /* Primary — mahogany bg, parchment text (used on light sections) */
     .btn-primary {
-      background: var(--color-lemon-lime);
-      color:      var(--color-olive-leaf);
+      background: var(--color-mahogany);
+      color:      var(--color-parchment);
     }
     .btn-primary:hover {
       transform:  scale(1.03);
-      box-shadow: 0 4px 20px rgba(211,216,88,0.4);
+      box-shadow: 0 4px 20px rgba(55,27,23,0.35);
     }
+    /* Secondary — outlined mahogany (used on light sections) */
     .btn-secondary {
-      background:   transparent;
-      color:        var(--color-olive-dark);
-      border:       1.5px solid var(--color-olive-dark);
-      padding:      12px 26px;
+      background: transparent;
+      color:      var(--color-mahogany);
+      border:     1.5px solid var(--color-mahogany);
+      padding:    12px 26px;
     }
     .btn-secondary:hover {
-      background: var(--color-olive-dark);
-      color:      var(--color-lemon-lime);
+      background: var(--color-mahogany);
+      color:      var(--color-parchment);
     }
+    /* Outline white — parchment outline (used on dark/mahogany sections) */
     .btn-outline-white {
-      background:  transparent;
-      color:       #fff;
-      border:      1.5px solid rgba(255,255,255,0.55);
-      padding:     12px 26px;
+      background: transparent;
+      color:      var(--color-parchment);
+      border:     1.5px solid rgba(238,237,233,0.55);
+      padding:    12px 26px;
     }
-    .btn-outline-white:hover { background: rgba(255,255,255,0.12); }
+    .btn-outline-white:hover { background: rgba(238,237,233,0.12); }
+    /* Parchment fill — for CTAs on dark backgrounds (hero, subscribe) */
+    .btn-parchment {
+      background: var(--color-parchment);
+      color:      var(--color-mahogany);
+      font-weight: 600;
+    }
+    .btn-parchment:hover {
+      transform:  scale(1.03);
+      box-shadow: 0 4px 20px rgba(238,237,233,0.3);
+    }
 
     /* ══════════════════════════════════════════
        SCROLL REVEAL
@@ -208,10 +224,10 @@
                         backdrop-filter 0.3s ease;
     }
     .site-nav.nav--scrolled {
-      background:       rgba(248,255,237,0.88);
+      background:       rgba(238,237,233,0.92);
       backdrop-filter:  blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom-color: rgba(0,0,0,0.08);
+      border-bottom-color: rgba(55,27,23,0.1);
     }
     .nav-logo {
       font-family:     var(--font-display);
@@ -243,10 +259,10 @@
       text-transform: lowercase;
     }
     .nav-pill:hover             { transform: scale(1.04); }
-    .nav-pill--outline          { border-color: var(--color-olive-leaf); color: var(--color-olive-leaf); background: transparent; }
-    .nav-pill--green            { background: var(--color-sweet-peony); color: #fff; border-color: var(--color-sweet-peony); }
-    .nav-pill--lemon            { background: var(--color-lemon-lime); color: var(--color-olive-leaf); border-color: var(--color-lemon-lime); }
-    .nav-pill--blue             { background: var(--color-icy-blue); color: var(--color-olive-dark); border-color: var(--color-icy-blue); }
+    .nav-pill--outline          { border-color: var(--color-mahogany); color: var(--color-mahogany); background: transparent; }
+    .nav-pill--green            { background: var(--color-mahogany); color: var(--color-parchment); border-color: var(--color-mahogany); }
+    .nav-pill--lemon            { background: var(--color-parchment-lt); color: var(--color-mahogany); border-color: var(--color-mahogany); }
+    .nav-pill--blue             { background: var(--color-parchment-lt); color: var(--color-mahogany); border-color: var(--color-mahogany); }
     .nav-mobile-toggle {
       display:        none;
       flex-direction: column;
@@ -321,10 +337,10 @@
     .hero-callout {
       font-size:      16px !important;
       font-weight:    600 !important;
-      color:          var(--color-lemon-lime) !important;
-      border-left:    3px solid var(--color-lemon-lime);
+      color:          var(--color-parchment) !important;
+      border-left:    3px solid var(--color-parchment);
       padding:        10px 16px;
-      background:     rgba(211,216,88,0.1);
+      background:     rgba(238,237,233,0.08);
       border-radius:  0 8px 8px 0;
     }
     .hero-body blockquote {
@@ -434,8 +450,8 @@
        ISSUE CARD
     ══════════════════════════════════════════ */
     .issue-card {
-      background:    var(--color-honeydew);
-      border:        1.5px solid rgba(88,91,10,0.15);
+      background:    var(--color-parchment-lt);
+      border:        1.5px solid rgba(55,27,23,0.15);
       border-radius: var(--radius-card);
       padding:       28px 24px;
       display:       flex;
@@ -526,8 +542,8 @@
       transition:    border-color 0.2s;
       text-transform: lowercase;
     }
-    .email-input::placeholder { color: rgba(255,255,255,0.5); }
-    .email-input:focus        { border-color: var(--color-lemon-lime); }
+    .email-input::placeholder { color: rgba(238,237,233,0.5); }
+    .email-input:focus        { border-color: var(--color-parchment); }
     .subscribe-note {
       font-size:    12px;
       color:        rgba(255,255,255,0.5);
@@ -576,7 +592,7 @@
       top:        8px;
       bottom:     8px;
       width:      1px;
-      background: var(--color-icy-blue);
+      background: rgba(55,27,23,0.2);
     }
     .timeline-item {
       display:        flex;
@@ -633,7 +649,7 @@
        SECTION 5 — WORK WITH ME
     ══════════════════════════════════════════ */
     .work-with-me {
-      background: var(--color-icy-blue);
+      background: rgba(55,27,23,0.2);
       padding:    var(--section-padding-y) var(--section-padding-x);
     }
     .work-with-me-inner { max-width: var(--container-max); margin: 0 auto; }
@@ -969,7 +985,7 @@
         </div>
 
         <div class="hero__cta reveal reveal-d3">
-          <a href="#" class="btn btn-primary">check it out →</a>
+          <a href="#" class="btn btn-parchment">check it out →</a>
           <a href="#newsletter-intro" class="btn btn-outline-white">read the latest issue</a>
         </div>
       </div>
@@ -1035,7 +1051,7 @@
       </p>
       <form class="email-form" onsubmit="return false;">
         <input class="email-input" type="email" placeholder="your@email.com" />
-        <button type="submit" class="btn btn-primary">subscribe →</button>
+        <button type="submit" class="btn btn-parchment">subscribe →</button>
       </form>
       <p class="subscribe-note">no spam, ever.</p>
     </div>
@@ -1089,22 +1105,22 @@
       Replace each item with:
       <div class="photo-strip-item"><img src="/img/gallery-N.jpg" alt="" loading="lazy" /></div>
     -->
-    <div class="photo-strip-item" style="background:#585B0A;">
+    <div class="photo-strip-item" style="background:#371B17;">
       <div class="photo-strip-placeholder">photo 1</div>
     </div>
-    <div class="photo-strip-item" style="background:#CE75A1;">
+    <div class="photo-strip-item" style="background:#5a2e28;">
       <div class="photo-strip-placeholder">photo 2</div>
     </div>
-    <div class="photo-strip-item" style="background:#D3D858;">
-      <div class="photo-strip-placeholder">photo 3</div>
+    <div class="photo-strip-item" style="background:#EEEDE9;">
+      <div class="photo-strip-placeholder" style="color:rgba(55,27,23,0.3);">photo 3</div>
     </div>
-    <div class="photo-strip-item" style="background:#B5DCFD;">
+    <div class="photo-strip-item" style="background:#2a1410;">
       <div class="photo-strip-placeholder">photo 4</div>
     </div>
-    <div class="photo-strip-item" style="background:#2B2D00;">
-      <div class="photo-strip-placeholder">photo 5</div>
+    <div class="photo-strip-item" style="background:#F7F6F2;">
+      <div class="photo-strip-placeholder" style="color:rgba(55,27,23,0.3);">photo 5</div>
     </div>
-    <div class="photo-strip-item" style="background:#EFF9DC;">
+    <div class="photo-strip-item" style="background:#371B17;">
       <div class="photo-strip-placeholder">photo 6</div>
     </div>
   </div>
