@@ -16,20 +16,47 @@
   <style>
     /* ── Tan Mon Cheri @font-face ── */
     @font-face {
-      font-family: 'Relationship of Melodrame';
-      src: url('/fonts/Relationship of melodrame.woff2') format('woff2');
-      font-weight: normal;
+      font-family: 'Editorial New';
+      src: url('/fonts/PPEditorialNew-Regular.woff2') format('woff2');
+      font-weight: 400;
       font-style:  normal;
       font-display: block;
     }
     @font-face {
-      font-family: 'Relationship of Melodrame';
-      src: url('/fonts/Relationship of melodrame.woff2') format('woff2');
-      font-weight: normal;
+      font-family: 'Editorial New';
+      src: url('/fonts/PPEditorialNew-Italic.woff2') format('woff2');
+      font-weight: 400;
       font-style:  italic;
       font-display: block;
     }
-    em, i { font-style: oblique 12deg !important; }
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('/fonts/PPEditorialNew-Ultralight.woff2') format('woff2');
+      font-weight: 200;
+      font-style:  normal;
+      font-display: block;
+    }
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('/fonts/PPEditorialNew-UltralightItalic.woff2') format('woff2');
+      font-weight: 200;
+      font-style:  italic;
+      font-display: block;
+    }
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('/fonts/PPEditorialNew-Ultrabold.woff2') format('woff2');
+      font-weight: 800;
+      font-style:  normal;
+      font-display: block;
+    }
+    @font-face {
+      font-family: 'Editorial New';
+      src: url('/fonts/PPEditorialNew-UltraboldItalic.woff2') format('woff2');
+      font-weight: 800;
+      font-style:  italic;
+      font-display: block;
+    }
 
     /* ══════════════════════════════════════════
        TOKENS
@@ -57,7 +84,7 @@
       --color-warm-tan:     #F7F6F2;
 
       /* Fonts */
-      --font-display: 'Relationship of Melodrame', Georgia, serif;
+      --font-display: 'Editorial New', Georgia, serif;
       --font-body:    'Neue Montreal', system-ui, sans-serif;
 
       /* Shape */
@@ -104,20 +131,21 @@
     .text-display {
       font-family:     var(--font-display);
       font-size:       clamp(52px, 8vw, 96px);
-      font-weight:     700;
+      font-weight:     800;
       line-height:     1.0;
       letter-spacing:  -0.02em;
     }
     .text-h2 {
       font-family: var(--font-display);
       font-size:   clamp(32px, 4vw, 52px);
-      font-weight: 400;
+      font-weight: 200;
+      font-style:  italic;
       line-height: 1.15;
     }
     .text-h3 {
       font-family: var(--font-display);
       font-size:   clamp(22px, 2.5vw, 32px);
-      font-weight: 700;
+      font-weight: 400;
       line-height: 1.2;
     }
     .text-body {
@@ -230,17 +258,13 @@
       border-bottom-color: rgba(55,27,23,0.1);
     }
     .nav-logo {
-      font-family:     var(--font-display);
-      font-size:       20px;
-      font-weight:     normal;
-      color:           var(--color-olive-leaf);
-      text-transform:  uppercase;
+      font-family:    var(--font-display);
+      font-size:      20px;
+      font-weight:    400;
+      color:          var(--color-mahogany);
+      text-transform: uppercase;
     }
-    .nav-logo strong {
-      font-weight:          normal;
-      -webkit-text-stroke:  0.6px var(--color-olive-leaf);
-      text-stroke:          0.6px var(--color-olive-leaf);
-    }
+    .nav-logo strong { font-weight: 800; }
     .nav-pills {
       display:     flex;
       align-items: center;
