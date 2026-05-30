@@ -62,26 +62,26 @@
        TOKENS
     ══════════════════════════════════════════ */
     :root {
-      /* Palette — Parchment & Rich Mahogany */
-      --color-parchment:    #EEEDE9;   /* page bg, nav, light sections     */
-      --color-parchment-lt: #F7F6F2;   /* card backgrounds, alt sections   */
-      --color-mahogany:     #371B17;   /* hero, subscribe, text, accents   */
+      /* Palette — Arabian Spice, Tender Peach & Albescent */
+      --color-parchment:    #f8d5b8;   /* Tender Peach — page bg, nav, light sections  */
+      --color-parchment-lt: #fce8d6;   /* Lighter Tender Peach — card hover, alt       */
+      --color-mahogany:     #884332;   /* Arabian Spice — hero, subscribe, text, btns  */
 
       /* Semantic aliases */
-      --color-honeydew:     #EEEDE9;   /* → Parchment                      */
-      --color-lemon-lime:   #EEEDE9;   /* → Parchment (btn on dark bg)     */
-      --color-sweet-peony:  #371B17;   /* → Mahogany (subscribe section)   */
-      --color-icy-blue:     #F7F6F2;   /* → Parchment-lt                   */
-      --color-olive-leaf:   #371B17;   /* → Mahogany                       */
-      --color-olive-dark:   #371B17;   /* → Mahogany (body text)           */
-      --color-cream:        #F7F6F2;   /* → Parchment-lt                   */
-      --color-burnt-orange: #371B17;
-      --color-acid-yellow:  #EEEDE9;
-      --color-forest-green: #371B17;
-      --color-off-white:    #EEEDE9;
-      --color-blush-pink:   #F7F6F2;
-      --color-rich-black:   #371B17;
-      --color-warm-tan:     #F7F6F2;
+      --color-honeydew:     #f8d5b8;   /* → Tender Peach                   */
+      --color-lemon-lime:   #f8d5b8;   /* → Tender Peach (btn on dark bg)  */
+      --color-sweet-peony:  #884332;   /* → Arabian Spice (subscribe)      */
+      --color-icy-blue:     #e1aacb;   /* → Albescent (secondary light)    */
+      --color-olive-leaf:   #884332;   /* → Arabian Spice                  */
+      --color-olive-dark:   #884332;   /* → Arabian Spice (body text)      */
+      --color-cream:        #e1aacb;   /* → Albescent (intro section bg)   */
+      --color-burnt-orange: #884332;
+      --color-acid-yellow:  #f8d5b8;
+      --color-forest-green: #884332;
+      --color-off-white:    #f8d5b8;
+      --color-blush-pink:   #e1aacb;
+      --color-rich-black:   #884332;
+      --color-warm-tan:     #f8d5b8;
 
       /* Fonts */
       --font-display: 'Editorial New', Georgia, serif;
@@ -188,7 +188,7 @@
     }
     .btn-primary:hover {
       transform:  scale(1.03);
-      box-shadow: 0 4px 20px rgba(55,27,23,0.35);
+      box-shadow: 0 4px 20px rgba(136,67,50,0.35);
     }
     /* Secondary — outlined mahogany (used on light sections) */
     .btn-secondary {
@@ -205,10 +205,10 @@
     .btn-outline-white {
       background: transparent;
       color:      var(--color-parchment);
-      border:     1.5px solid rgba(238,237,233,0.55);
+      border:     1.5px solid rgba(248,213,184,0.55);
       padding:    12px 26px;
     }
-    .btn-outline-white:hover { background: rgba(238,237,233,0.12); }
+    .btn-outline-white:hover { background: rgba(248,213,184,0.12); }
     /* Parchment fill — for CTAs on dark backgrounds (hero, subscribe) */
     .btn-parchment {
       background: var(--color-parchment);
@@ -217,7 +217,7 @@
     }
     .btn-parchment:hover {
       transform:  scale(1.03);
-      box-shadow: 0 4px 20px rgba(238,237,233,0.3);
+      box-shadow: 0 4px 20px rgba(248,213,184,0.3);
     }
 
     /* ══════════════════════════════════════════
@@ -252,10 +252,10 @@
                         backdrop-filter 0.3s ease;
     }
     .site-nav.nav--scrolled {
-      background:       rgba(238,237,233,0.92);
+      background:       rgba(248,213,184,0.92);
       backdrop-filter:  blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      border-bottom-color: rgba(55,27,23,0.1);
+      border-bottom-color: rgba(136,67,50,0.1);
     }
     .nav-logo {
       font-family:    var(--font-display);
@@ -328,7 +328,7 @@
       z-index:    5;
     }
     .hero__text .text-label {
-      color:        rgba(255,255,255,0.6);
+      color:        rgba(248,213,184,0.7);
       display:      block;
       margin-bottom: 16px;
       text-transform: lowercase;
@@ -339,7 +339,7 @@
       font-weight:    700;
       line-height:    1.0;
       letter-spacing: -0.02em;
-      color:          #fff;
+      color:          #f8d5b8;
       margin-bottom:  24px;
     }
     .hero-body {
@@ -353,18 +353,18 @@
       font-family: var(--font-body);
       font-size:   15px;
       line-height: 1.75;
-      color:       rgba(255,255,255,0.82);
+      color:       rgba(248,213,184,0.88);
       text-transform: lowercase;
     }
-    .hero-body strong { color: #fff; font-weight: 600; }
-    .hero-body em     { color: rgba(255,255,255,0.92); }
+    .hero-body strong { color: #f8d5b8; font-weight: 600; }
+    .hero-body em     { color: rgba(248,213,184,0.95); }
     .hero-callout {
       font-size:      16px !important;
       font-weight:    600 !important;
       color:          var(--color-parchment) !important;
       border-left:    3px solid var(--color-parchment);
       padding:        10px 16px;
-      background:     rgba(238,237,233,0.08);
+      background:     rgba(248,213,184,0.08);
       border-radius:  0 8px 8px 0;
     }
     .hero-body blockquote {
@@ -374,7 +374,7 @@
       font-size:    14px;
       font-weight:  600;
       color:        var(--color-lemon-lime);
-      background:   rgba(211,216,88,0.08);
+      background:   rgba(225,170,203,0.08);
       border-radius: 0 8px 8px 0;
       text-transform: lowercase;
     }
@@ -419,7 +419,7 @@
       width:          600px;
       height:         600px;
       border-radius:  50%;
-      background:     rgba(211,216,88,0.05);
+      background:     rgba(225,170,203,0.05);
       pointer-events: none;
     }
 
@@ -461,7 +461,7 @@
       font-family:    var(--font-body);
       font-size:      14px;
       line-height:    1.75;
-      color:          #4a4e00;
+      color:          #884332;
       text-transform: lowercase;
     }
     .intro-bio strong { color: var(--color-olive-leaf); font-weight: 600; }
@@ -478,7 +478,7 @@
     ══════════════════════════════════════════ */
     .issue-card {
       background:    var(--color-parchment-lt);
-      border:        1.5px solid rgba(55,27,23,0.15);
+      border:        1.5px solid rgba(136,67,50,0.15);
       border-radius: var(--radius-card);
       padding:       28px 24px;
       display:       flex;
@@ -508,7 +508,7 @@
     .issue-card__tease {
       font-family: var(--font-body);
       font-size:   14px;
-      color:       #5a5e00;
+      color:       #884332;
       line-height: 1.6;
       flex:        1;
     }
@@ -542,12 +542,12 @@
       font-family: var(--font-display);
       font-size:   clamp(36px, 5vw, 60px);
       font-weight: 700;
-      color:       #fff;
+      color:       #f8d5b8;
       line-height: 1.05;
       margin-bottom: 20px;
     }
     .subscribe-cta .text-body {
-      color:        rgba(255,255,255,0.75);
+      color:        rgba(248,213,184,0.82);
       margin-bottom: 40px;
     }
     .email-form {
@@ -559,9 +559,9 @@
     .email-input {
       padding:       14px 24px;
       border-radius: var(--radius-pill);
-      border:        1.5px solid rgba(255,255,255,0.35);
-      background:    rgba(255,255,255,0.12);
-      color:         #fff;
+      border:        1.5px solid rgba(248,213,184,0.4);
+      background:    rgba(248,213,184,0.12);
+      color:         #f8d5b8;
       font-family:   var(--font-body);
       font-size:     15px;
       width:         300px;
@@ -569,11 +569,11 @@
       transition:    border-color 0.2s;
       text-transform: lowercase;
     }
-    .email-input::placeholder { color: rgba(238,237,233,0.5); }
+    .email-input::placeholder { color: rgba(248,213,184,0.5); }
     .email-input:focus        { border-color: var(--color-parchment); }
     .subscribe-note {
       font-size:    12px;
-      color:        rgba(255,255,255,0.5);
+      color:        rgba(248,213,184,0.55);
       margin-top:   14px;
     }
 
@@ -600,7 +600,7 @@
     .about-snapshot__bio .text-h3 { margin-bottom: 20px; }
     .about-snapshot__bio .text-body + .text-body { margin-top: 16px; }
     .about-snapshot__timeline .text-label {
-      color:        #aaa;
+      color:        rgba(136,67,50,0.4);
       display:      block;
       margin-bottom: 24px;
     }
@@ -619,7 +619,7 @@
       top:        8px;
       bottom:     8px;
       width:      1px;
-      background: rgba(55,27,23,0.2);
+      background: rgba(136,67,50,0.2);
     }
     .timeline-item {
       display:        flex;
@@ -656,7 +656,7 @@
     .timeline-item__years {
       font-family: var(--font-body);
       font-size:   12px;
-      color:       #888;
+      color:       rgba(136,67,50,0.45);
       margin:      0;
       text-transform: lowercase;
     }
@@ -676,7 +676,7 @@
        SECTION 5 — WORK WITH ME
     ══════════════════════════════════════════ */
     .work-with-me {
-      background: rgba(55,27,23,0.2);
+      background: rgba(136,67,50,0.2);
       padding:    var(--section-padding-y) var(--section-padding-x);
     }
     .work-with-me-inner { max-width: var(--container-max); margin: 0 auto; }
@@ -702,7 +702,7 @@
     }
     .work-tile {
       background:    rgba(255,255,255,0.55);
-      border:        1.5px solid rgba(88,91,10,0.15);
+      border:        1.5px solid rgba(136,67,50,0.15);
       border-radius: var(--radius-card);
       padding:       36px 32px;
       display:       flex;
@@ -725,7 +725,7 @@
     .work-tile__desc {
       font-family:    var(--font-body);
       font-size:      14px;
-      color:          #555;
+      color:          #884332;
       line-height:    1.65;
       flex:           1;
       text-transform: lowercase;
@@ -768,13 +768,13 @@
       align-items: center;
     }
     .ai-central__left .text-label {
-      color:        rgba(255,255,255,0.4);
+      color:        rgba(248,213,184,0.55);
       display:      block;
       margin-bottom: 16px;
     }
-    .ai-central__left .text-h3 { color: #fff; margin-bottom: 20px; }
+    .ai-central__left .text-h3 { color: #f8d5b8; margin-bottom: 20px; }
     .ai-central__left .text-body {
-      color:     rgba(255,255,255,0.72);
+      color:     rgba(248,213,184,0.82);
       max-width: 380px;
     }
     .stats-grid {
@@ -803,7 +803,7 @@
     .stat-card__label {
       font-family:    var(--font-body);
       font-size:      13px;
-      color:          rgba(255,255,255,0.7);
+      color:          rgba(248,213,184,0.75);
       text-transform: lowercase;
     }
 
@@ -863,7 +863,7 @@
       justify-content: center;
       font-family:     var(--font-body);
       font-size:       11px;
-      color:           rgba(255,255,255,0.4);
+      color:           rgba(248,213,184,0.5);
       letter-spacing:  0.06em;
       text-transform:  lowercase;
     }
@@ -890,7 +890,7 @@
       font-size:      11px;
       font-weight:    600;
       letter-spacing: 0.1em;
-      color:          #999;
+      color:          rgba(136,67,50,0.4);
       margin-bottom:  14px;
       text-transform: lowercase;
     }
@@ -921,7 +921,7 @@
     .footer-tagline {
       font-family:  var(--font-display);
       font-size:    16px;
-      color:        #aaa;
+      color:        rgba(136,67,50,0.45);
       padding:      0 var(--section-padding-x) 40px;
       margin-top:   -12px;
       display:      block;
@@ -929,7 +929,7 @@
     }
     .footer__strip {
       background:      var(--color-olive-leaf);
-      color:           rgba(255,255,255,0.7);
+      color:           rgba(248,213,184,0.8);
       font-size:       12px;
       font-family:     var(--font-body);
       padding:         20px var(--section-padding-x);
@@ -1073,7 +1073,7 @@
     <div class="subscribe-cta-inner reveal">
       <span class="text-label">join the curious</span>
       <h2 class="subscribe-headline" style="margin-top:16px;">here's what i found out.</h2>
-      <p class="text-body" style="color:rgba(255,255,255,0.75); margin-bottom:40px;">
+      <p class="text-body" style="color:rgba(248,213,184,0.82); margin-bottom:40px;">
         free, weekly. unsubscribe whenever. no sponsored nonsense.
       </p>
       <form class="email-form" onsubmit="return false;">
@@ -1139,13 +1139,13 @@
       <div class="photo-strip-placeholder">photo 2</div>
     </div>
     <div class="photo-strip-item" style="background:#EEEDE9;">
-      <div class="photo-strip-placeholder" style="color:rgba(55,27,23,0.3);">photo 3</div>
+      <div class="photo-strip-placeholder" style="color:rgba(136,67,50,0.3);">photo 3</div>
     </div>
     <div class="photo-strip-item" style="background:#2a1410;">
       <div class="photo-strip-placeholder">photo 4</div>
     </div>
     <div class="photo-strip-item" style="background:#F7F6F2;">
-      <div class="photo-strip-placeholder" style="color:rgba(55,27,23,0.3);">photo 5</div>
+      <div class="photo-strip-placeholder" style="color:rgba(136,67,50,0.3);">photo 5</div>
     </div>
     <div class="photo-strip-item" style="background:#371B17;">
       <div class="photo-strip-placeholder">photo 6</div>
